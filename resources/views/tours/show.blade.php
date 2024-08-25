@@ -30,5 +30,6 @@
         </div>
 
         <a href="{{ route('tours.index') }}" class="btn btn-primary">Back</a>
+        <a href="{{ route('bookings.create', $tour->id) }}" class="btn btn-primary">booking</a>
     </div>
 @endsection

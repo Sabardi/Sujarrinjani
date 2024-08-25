@@ -18,13 +18,12 @@
             @csrf
 
             <div class="form-group">
-                <label for="tours_id">Tour:</label>
-                <select class="form-control" id="tours_id" name="tours_id" required>
-                    @foreach ($tours as $tour)
-                        <option value="{{ $tour->id }}">{{ $tour->name }}</option>
-                    @endforeach
-                </select>
+                <label for="kos_nama">Nama Kos</label>
+                <input type="text" class="form-control form-control-lg" id="tours_id"
+                    value="{{ $id->name }}" readonly>
+                <input type="hidden" id="tours_id" name="tours_id" value="{{ $id->id }}">
             </div>
+
 
             <div class="form-group">
                 <label for="fullName">Full Name:</label>

@@ -22,3 +22,4 @@ Route::resource('tours', TourController::class);
 Route::resource('payments', PaymentController::class);
 
 Route::resource('bookings', BookingController::class);
+Route::get('bookings/create/{id}', [BookingController::class, 'create'])->name('bookings.create');

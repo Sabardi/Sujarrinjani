@@ -14,16 +14,15 @@ class BookingController extends Controller
         return view('bookings.index', compact('bookings'));
     }
 
-    public function create()
+    public function create(Tour $id)
     {
-        $tours = Tour::all(); // Load available tours
-        return view('bookings.create', compact('tours'));
+        return view('bookings.create', compact('id'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'tours_id' => 'required|exists:tours,id',
+            'tours_id' => 'required|integer',
             'fullName' => 'required|string|max:45',
             'email' => 'required|email|max:45',
             'pasport_number' => 'required|string|max:45',

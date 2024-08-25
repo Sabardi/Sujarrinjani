@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         <h1>Bookings</h1>
-        <a href="{{ route('bookings.create') }}" class="btn btn-primary">Create New Booking</a>
 
         @if ($message = Session::get('success'))
             <div class="alert alert-success mt-3">
