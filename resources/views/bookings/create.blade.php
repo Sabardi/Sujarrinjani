@@ -39,9 +39,9 @@
             </div>
 
             <div class="form-group">
-                <label for="passport_number">Passport Number:</label>
-                <input type="text" class="form-control" id="passport_number" name="passport_number"
-                    value="{{ old('passport_number') }}" required>
+                <label for="pasport_number">Passport Number:</label>
+                <input type="text" class="form-control" id="pasport_number" name="pasport_number"
+                    value="{{ old('pasport_number') }}" required>
                 @error('passport_number')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -57,10 +57,10 @@
             </div>
 
             <div class="form-group">
-                <label for="total_participants">Total Participants:</label>
-                <input type="number" class="form-control" id="total_participants" name="total_participants"
-                    value="{{ old('total_participants') }}" required>
-                @error('total_participants')
+                <label for="total_participan">Total Participants:</label>
+                <input type="number" class="form-control" id="total_participan" name="total_participan"
+                    value="{{ old('total_participan') }}" required>
+                @error('total_participan')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

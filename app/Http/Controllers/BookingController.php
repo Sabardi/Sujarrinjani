@@ -19,6 +19,27 @@ class BookingController extends Controller
         return view('bookings.create', compact('id'));
     }
 
+    // public function store(Request $request)
+    // {
+        // $request->validate([
+        //     'tours_id' => 'required|integer',
+        //     'fullName' => 'required|string|max:45',
+        //     'email' => 'required|email|max:45',
+        //     'pasport_number' => 'required|string|max:45',
+        //     'nationality' => 'required|string|max:45',
+        //     'total_participan' => 'required|integer',
+        //     'arrival_date' => 'required|date',
+        //     'pickup_time' => 'required|date_format:H:i',
+        //     'pickup_location' => 'required|string|max:45',
+        //     'add_message' => 'nullable|string|max:250',
+        // ]);
+
+    //     Booking::create($request->all());
+
+    //     return redirect()->route('bookings.index')
+    //         ->with('success', 'Booking created successfully.');
+    // }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -34,11 +55,13 @@ class BookingController extends Controller
             'add_message' => 'nullable|string|max:250',
         ]);
 
-        Booking::create($request->all());
+        // Store the booking data temporarily in the session
+        session(['booking_data' => $request->all()]);
 
-        return redirect()->route('bookings.index')
-            ->with('success', 'Booking created successfully.');
+        // Redirect to the transaction page
+        return redirect()->route('transaksi.create');
     }
+
 
     public function show(Booking $booking)
     {

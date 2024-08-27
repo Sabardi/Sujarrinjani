@@ -4,6 +4,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TourController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,3 +24,6 @@ Route::resource('payments', PaymentController::class);
 
 Route::resource('bookings', BookingController::class);
 Route::get('bookings/create/{id}', [BookingController::class, 'create'])->name('bookings.create');
+
+Route::resource('transaksi', TransaksiController::class);
+

@@ -13,7 +13,8 @@ class Booking extends Model
     protected $fillable = [
         'tours_id',
         'fullName',
-        'email', 'pasport_number',
+        'email',
+        'pasport_number',
         'nationality',
         'total_participan',
         'arrival_date',
