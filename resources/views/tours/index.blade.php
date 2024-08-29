@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layout.app')
+
 
 @section('content')
     <div class="container">
@@ -6,7 +7,7 @@
         <a href="{{ route('tours.create') }}" class="btn btn-primary">Create New Tour</a>
 
         @if ($message = Session::get('success'))
-            <div class="alert alert-success mt-3">
+            <div class="mt-3 alert alert-success">
                 {{ $message }}
             </div>
         @endif

@@ -65,8 +65,8 @@
 
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
-                                        <a class="dropdown-item" href="route('logout')"
-                                            onclick="event.preventDefault();
+                                            <a class="dropdown-item" href="route('logout')"
+                                                onclick="event.preventDefault();
                                                     this.closest('form').submit();">Logout</a>
                                         </form>
                                     </li>

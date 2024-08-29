@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Dashboard sujjarinjani</title>
+    <title>Mount Rinjani Trekking Tour Guide - Sujar Rinjani</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     @include('admin.layouts.css')
 </head>
@@ -17,8 +17,8 @@
                     <!-- Logo Header -->
                     <div class="logo-header" data-background-color="dark">
                         <a href="index.html" class="logo">
-                            <img src="{{ asset('assets') }}/img/kaiadmin/logo_light.svg" alt="navbar brand"
-                                class="navbar-brand" height="20" />
+                            <img src="{{ asset('assets') }}/img/logo/logo.png" alt="navbar brand" class="navbar-brand"
+                                height="20" />
                         </a>
                         <div class="nav-toggle">
                             <button class="btn btn-toggle toggle-sidebar">

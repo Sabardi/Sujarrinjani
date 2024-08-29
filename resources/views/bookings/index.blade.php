@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layout.app')
+
 
 @section('content')
     <div class="container">
         <h1>Bookings</h1>
 
         @if ($message = Session::get('success'))
-            <div class="alert alert-success mt-3">
+            <div class="mt-3 alert alert-success">
                 {{ $message }}
             </div>
         @endif

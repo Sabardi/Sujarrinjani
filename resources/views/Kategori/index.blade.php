@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 <div class="container">
     <h2>Kategori List</h2>
-    <a href="{{ route('kategori.create') }}" class="btn btn-primary mb-3">Create New Kategori</a>
+    <a href="{{ route('kategori.create') }}" class="mb-3 btn btn-primary">Create New Kategori</a>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

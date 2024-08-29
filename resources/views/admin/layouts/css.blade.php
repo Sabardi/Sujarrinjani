@@ -1,4 +1,4 @@
-<link rel="icon" href="{{ asset('assets') }}/img/kaiadmin/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="{{ asset('assets') }}/img/logo/logo.png" type="image/x-icon" />
 
 <!-- Fonts and icons -->
 <script src="{{ asset('assets') }}/js/plugin/webfont/webfont.min.js"></script>
