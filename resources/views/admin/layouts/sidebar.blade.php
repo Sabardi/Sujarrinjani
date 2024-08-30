@@ -54,6 +54,11 @@
                                         <span class="sub-item">Tours</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('artikels.index') }}">
+                                        <span class="sub-item">Artikel</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -109,4 +114,3 @@
             </div>
         </div>
     </div>
-    <!-- End Sidebar -->

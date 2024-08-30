@@ -20,5 +20,10 @@ class Tour extends Model
     {
         return $this->hasMany(Booking::class, 'tours_id');
     }
+
+    public function artikel()
+    {
+        return $this->hasOne(Artikel::class, 'tours_id');
+    }
 }
 

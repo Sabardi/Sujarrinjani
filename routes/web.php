@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PaymentController;
@@ -20,6 +21,9 @@ Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCatego
 Route::get('/', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource('artikels', ArtikelController::class);
+
 
 Route::middleware('auth')->group(function () {
     Route::resource('kategori', KategoriController::class);
