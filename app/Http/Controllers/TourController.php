@@ -27,10 +27,18 @@ class TourController extends Controller
             'description' => 'nullable|string|max:255',
             'price' => 'required|numeric',
             'kategori_id' => 'required|exists:kategoris,id',
-            'image' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Validate as an image
         ]);
 
-        Tour::create($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/tours'), $imageName);
+            $data['image'] = 'images/tours/' . $imageName; // Save the image path in the database
+        }
+
+        Tour::create($data);
 
         return redirect()->route('tours.index')
             ->with('success', 'Tour created successfully.');
@@ -53,14 +61,32 @@ class TourController extends Controller
             'description' => 'nullable|string|max:255',
             'price' => 'required|numeric',
             'kategori_id' => 'required|exists:kategoris,id',
-            'image' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Validate as an image
         ]);
 
-        $tour->update($request->all());
+        // Ambil data dari request, kecuali untuk gambar
+        $data = $request->except(['image']);
+
+        // Jika ada gambar baru, proses penyimpanan gambar
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if ($tour->image && file_exists(public_path($tour->image))) {
+                unlink(public_path($tour->image));
+            }
+
+            // Simpan gambar baru
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/tours'), $imageName);
+            $data['image'] = 'images/tours/' . $imageName; // Perbarui jalur gambar di database
+        }
+
+        // Perbarui data model dengan data baru
+        $tour->update($data);
 
         return redirect()->route('tours.index')
             ->with('success', 'Tour updated successfully.');
     }
+
 
     public function destroy(Tour $tour)
     {

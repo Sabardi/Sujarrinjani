@@ -94,7 +94,10 @@
                                                 <td>{{ $tour->description }}</td>
                                                 <td>{{ $tour->price }}</td>
                                                 <td>{{ $tour->kategori->name }}</td>
-                                                <td>{{ $tour->image }}</td>
+                                                <td>
+                                                    <img src="{{ asset($tour->image) }}" alt="{{ $tour->name }}"
+                                                        style="max-width: 200px; height: auto;">
+                                                </td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <button type="button" class="btn btn-link btn-warning btn-lg"
@@ -150,7 +153,8 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('tours.store') }}" method="POST">
+                                                            <form action="{{ route('tours.store') }}" method="POST"
+                                                                enctype="multipart/form-data">
                                                                 @csrf
 
                                                                 <div class="form-group">
@@ -198,8 +202,7 @@
                                                                 <div class="form-group">
                                                                     <label for="image">Image:</label>
                                                                     <input type="file" class="form-control"
-                                                                        id="image" name="image" accept="image/*"
-                                                                        required>
+                                                                        id="image" name="image" required>
                                                                     @error('image')
                                                                         <div class="text-danger">{{ $message }}</div>
                                                                     @enderror
@@ -230,7 +233,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <form action="{{ route('tours.update', $tour->id) }}"
-                                                                method="POST">
+                                                                method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PUT')
 
@@ -272,13 +275,13 @@
                                                                     <!-- Display current image if available -->
                                                                     @if ($tour->image)
                                                                         <div class="mb-2">
-                                                                            <img src="{{ asset('storage/' . $tour->image) }}"
-                                                                                alt="Current Image"
-                                                                                style="max-width: 200px;">
+                                                                            <img src="{{ asset($tour->image) }}"
+                                                                                alt="{{ $tour->name }}"
+                                                                                style="max-width: 200px; height: auto;">
                                                                         </div>
                                                                     @endif
                                                                     <input type="file" class="form-control"
-                                                                        id="image" name="image" accept="image/*">
+                                                                        id="image" name="image">
                                                                     @error('image')
                                                                         <div class="text-danger">{{ $message }}</div>
                                                                     @enderror
