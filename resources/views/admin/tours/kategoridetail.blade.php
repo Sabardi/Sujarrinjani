@@ -137,6 +137,163 @@
                                                     </div>
                                                 </td>
                                             </tr>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Tour
+                                                            </h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ route('tours.store') }}" method="POST">
+                                                                @csrf
+
+                                                                <div class="form-group">
+                                                                    <label for="name">Name:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="name" name="name"
+                                                                        value="{{ old('name') }}" required>
+                                                                    @error('name')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="description">Description:</label>
+                                                                    <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
+                                                                    @error('description')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="price">Price:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="price" name="price"
+                                                                        value="{{ old('price') }}" required>
+                                                                    @error('price')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="Category">Category:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="Category"
+                                                                        value="{{ $tour->kategori->name }}" readonly>
+                                                                    <input type="hidden" class="form-control"
+                                                                        id="kategori_id" name="kategori_id"
+                                                                        value="{{ $tour->kategori->id }}">
+
+                                                                    @error('kategori')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="image">Image:</label>
+                                                                    <input type="file" class="form-control"
+                                                                        id="image" name="image" accept="image/*"
+                                                                        required>
+                                                                    @error('image')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Save</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal fade" id="exampleModal{{ $tour->id }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Tour
+                                                            </h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ route('tours.update', $tour->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+
+                                                                <div class="form-group">
+                                                                    <label for="name">Name:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="name" name="name"
+                                                                        value="{{ $tour->name }}" required>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="description">Description:</label>
+                                                                    <textarea class="form-control" id="description" name="description">{{ $tour->description }}</textarea>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="price">Price:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="price" name="price"
+                                                                        value="{{ $tour->price }}" required>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="Category">Category:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="Category"
+                                                                        value="{{ $tour->kategori->name }}" readonly>
+                                                                    <input type="hidden" class="form-control"
+                                                                        id="kategori_id" name="kategori_id"
+                                                                        value="{{ $tour->kategori->id }}">
+
+                                                                    @error('kategori')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="image">Image:</label>
+                                                                    <!-- Display current image if available -->
+                                                                    @if ($tour->image)
+                                                                        <div class="mb-2">
+                                                                            <img src="{{ asset('storage/' . $tour->image) }}"
+                                                                                alt="Current Image"
+                                                                                style="max-width: 200px;">
+                                                                        </div>
+                                                                    @endif
+                                                                    <input type="file" class="form-control"
+                                                                        id="image" name="image" accept="image/*">
+                                                                    @error('image')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Save</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endforeach
                                     </tbody>
                                 </table>
