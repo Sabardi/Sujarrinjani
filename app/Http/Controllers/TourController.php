@@ -11,7 +11,8 @@ class TourController extends Controller
     public function index()
     {
         $tours = Tour::with('kategori')->get();
-        return view('tours.index', compact('tours'));
+        $kategoris = Kategori::withCount('tours')->get();
+        return view('admin.tours.index', compact('tours', 'kategoris'));
     }
 
     public function create()
@@ -63,11 +64,20 @@ class TourController extends Controller
 
     public function destroy(Tour $tour)
     {
-        $tour->delete();
+        try {
+            $tour->delete();
+            return redirect()->route('tours.index')
+                ->with('success', 'Tour deleted successfully.');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->route('tours.index')
+                ->with('error', 'Cannot delete this toures because it is associated with other data.');
+        }
+
 
         return redirect()->route('tours.index')
             ->with('success', 'Tour deleted successfully.');
     }
+
 
     public function filterByCategory(Kategori $kategori)
     {
@@ -75,6 +85,6 @@ class TourController extends Controller
         $tours = Tour::where('kategori_id', $kategori->id)->get();
 
         // Pass the filtered tours and category to the view
-        return view('tours.index', compact('tours', 'kategori'));
+        return view('admin.tours.kategoridetail', compact('tours', 'kategori'));
     }
 }

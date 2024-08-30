@@ -3,7 +3,7 @@
         <div class="sidebar-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="white">
-                <a href="index.html" class="logo">
+                <a href="{{ route('dashboard') }}" class="logo">
                     <img src="{{ asset('assets') }}/img/logo/logo.png" alt="navbar brand" class="navbar-brand"
                         height="70" />
                 </a>
@@ -25,10 +25,9 @@
             <div class="sidebar-content">
                 <ul class="nav nav-secondary">
                     <li class="nav-item active">
-                        <a data-bs-toggle="collapse" href="" class="collapsed" aria-expanded="false">
+                        <a href="{{ route('dashboard') }}">
                             <i class="fas fa-home"></i>
                             <p>Dashboard</p>
-                            {{-- <span class="caret"></span> --}}
                         </a>
                     </li>
                     <li class="nav-section">
@@ -40,19 +39,19 @@
                     <li class="nav-item">
                         <a data-bs-toggle="collapse" href="#base">
                             <i class="fas fa-layer-group"></i>
-                            <p>trek</p>
+                            <p>Toures</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse" id="base">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="components/avatars.html">
-                                        <span class="sub-item">Avatars</span>
+                                    <a href="{{ route('kategori.index') }}">
+                                        <span class="sub-item">kategori</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="components/buttons.html">
-                                        <span class="sub-item">Buttons</span>
+                                    <a href="{{ route('tours.index') }}">
+                                        <span class="sub-item">Tours</span>
                                     </a>
                                 </li>
                             </ul>
@@ -61,14 +60,14 @@
                     <li class="nav-item">
                         <a data-bs-toggle="collapse" href="#sidebarLayouts">
                             <i class="fas fa-th-list"></i>
-                            <p>Sidebar Layouts</p>
+                            <p>Booking</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse" id="sidebarLayouts">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="icon-menu.html">
-                                        <span class="sub-item">Icon Menu</span>
+                                    <a href="{{ route('bookings.index') }}">
+                                        <span class="sub-item">data booking</span>
                                     </a>
                                 </li>
                             </ul>
@@ -77,14 +76,14 @@
                     <li class="nav-item">
                         <a data-bs-toggle="collapse" href="#forms">
                             <i class="fas fa-pen-square"></i>
-                            <p>Forms</p>
+                            <p>Transaksi</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse" id="forms">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="forms/forms.html">
-                                        <span class="sub-item">Basic Form</span>
+                                    <a href="{{ route('transaksi.index') }}">
+                                        <span class="sub-item">transaksi</span>
                                     </a>
                                 </li>
                             </ul>
