@@ -3,19 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use App\Models\Tour;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikels = Artikel::all();
-        return view('admin.artikels.index', compact('artikels'));
+        $artikels = Artikel::with('tour')->get();
+        $toures = Tour::all();
+        return view('admin.artikels.index', compact('artikels', 'toures'));
     }
 
     public function create()
     {
         return view('admin.artikels.create');
+    }
+
+    public function show(Artikel $artikel)
+    {
+        return view('admin.artikels.show', compact('artikel'));
     }
 
     public function store(Request $request)
@@ -36,10 +43,6 @@ class ArtikelController extends Controller
             'day2_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'day3_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'day4_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
-            // 'day1_image' => 'nullable',
-            // 'day2_image' => 'nullable',
-            // 'day3_image' => 'nullable',
-            // 'day4_image' => 'nullable',
         ]);
 
         $data = $request->all();
@@ -68,17 +71,17 @@ class ArtikelController extends Controller
     public function update(Request $request, Artikel $artikel)
     {
         $request->validate([
-            'tours_id' => 'required|exists:tours,id',
+            'tours_id' => 'required',
             'quote' => 'required|string|max:45',
-            'itinerary' => 'required|string|max:300',
-            'paragrap1_day1' => 'required|string|max:300',
-            'paragrap2_day1' => 'nullable|string|max:300',
-            'paragrap1_day2' => 'required|string|max:300',
-            'paragrap2_day2' => 'nullable|string|max:300',
-            'paragrap1_day3' => 'required|string|max:300',
-            'paragrap2_day3' => 'nullable|string|max:300',
-            'paragrap1_day4' => 'nullable|string|max:300',
-            'paragrap2_day4' => 'nullable|string|max:300',
+            'itinerary' => 'required',
+            'paragrap1_day1' => 'required',
+            'paragrap2_day1' => 'nullable',
+            'paragrap1_day2' => 'required',
+            'paragrap2_day2' => 'nullable',
+            'paragrap1_day3' => 'required',
+            'paragrap2_day3' => 'nullable',
+            'paragrap1_day4' => 'nullable',
+            'paragrap2_day4' => 'nullable',
             'day1_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'day2_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'day3_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',

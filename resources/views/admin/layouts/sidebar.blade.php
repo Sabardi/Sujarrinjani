@@ -20,11 +20,12 @@
                 </button>
             </div>
             <!-- End Logo Header -->
+            {{-- active --}}
         </div>
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
             <div class="sidebar-content">
                 <ul class="nav nav-secondary">
-                    <li class="nav-item active">
+                    <li class="nav-item @yield('Dashboard')">
                         <a href="{{ route('dashboard') }}">
                             <i class="fas fa-home"></i>
                             <p>Dashboard</p>
@@ -36,7 +37,7 @@
                         </span>
                         <h4 class="text-section">Components</h4>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @yield('Toures')">
                         <a data-bs-toggle="collapse" href="#base">
                             <i class="fas fa-layer-group"></i>
                             <p>Toures</p>
@@ -62,7 +63,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @yield('Booking')">
                         <a data-bs-toggle="collapse" href="#sidebarLayouts">
                             <i class="fas fa-th-list"></i>
                             <p>Booking</p>
@@ -78,7 +79,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @yield('Transaksi')">
                         <a data-bs-toggle="collapse" href="#forms">
                             <i class="fas fa-pen-square"></i>
                             <p>Transaksi</p>
@@ -88,13 +89,13 @@
                             <ul class="nav nav-collapse">
                                 <li>
                                     <a href="{{ route('transaksi.index') }}">
-                                        <span class="sub-item">transaksi</span>
+                                        <span class="sub-item">Transaksi</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @yield('Tables')">
                         <a data-bs-toggle="collapse" href="#tables">
                             <i class="fas fa-table"></i>
                             <p>Tables</p>

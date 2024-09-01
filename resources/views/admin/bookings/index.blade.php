@@ -1,4 +1,6 @@
 @extends('admin.layouts.app')
+@section('Booking', 'active')
+
 @section('content')
     <div class="container">
         <div class="page-inner">

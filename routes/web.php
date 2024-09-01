@@ -11,9 +11,9 @@ use App\Http\Controllers\ProfileController;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/kategori', function () {
-    return view('Kategori.index');
-});
+// Route::get('/kategori', function () {
+//     return view('Kategori.index');
+// });
 
 // Route to filter tours by category
 Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCategory'])->name('tours.filterByCategory');

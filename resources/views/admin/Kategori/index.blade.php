@@ -1,4 +1,6 @@
 @extends('admin.layouts.app')
+@section('Toures', 'active')
+
 @section('content')
     <div class="container">
         <div class="page-inner">
@@ -6,7 +8,7 @@
                 <h3 class="mb-3 fw-bold">Kategori</h3>
                 <ul class="mb-3 breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="{{ route('dashboard') }}">
                             <i class="icon-home"></i>
                         </a>
                     </li>
@@ -14,7 +16,7 @@
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Toures</a>
+                        <a href="{{ route('tours.index') }}">Toures</a>
                     </li>
                     <li class="separator">
                         <i class="icon-arrow-right"></i>

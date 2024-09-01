@@ -1,4 +1,6 @@
 @extends('admin.layouts.app')
+@section('Toures', 'active')
+
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -29,7 +31,7 @@
                 {{-- <h3 class="mb-3 fw-bold">Tour</h3> --}}
                 <ul class="mb-3 breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="{{ route('dashboard') }}">
                             <i class="icon-home"></i>
                         </a>
                     </li>
@@ -37,7 +39,7 @@
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Toures</a>
+                        <a href="{{ route('tours.index') }}">Toures</a>
                     </li>
                     <li class="separator">
                         <i class="icon-arrow-right"></i>
@@ -219,7 +221,7 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Tour
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Tour
                                                             </h1>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
