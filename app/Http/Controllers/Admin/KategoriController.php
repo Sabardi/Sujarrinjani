@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
 {
+    //
     public function index()
     {
         $kategori = Kategori::all();
-        return view('Kategori.index', compact('kategori'));
+        return view('admin.Kategori.index', compact('kategori'));
     }
 
     // Show the form for creating a new resource.
@@ -60,9 +62,13 @@ class KategoriController extends Controller
     // Remove the specified resource from storage.
     public function destroy(Kategori $kategori)
     {
-        $kategori->delete();
-
-        return redirect()->route('kategori.index')
-            ->with('success', 'Kategori deleted successfully.');
+        try {
+            $kategori->delete();
+            return redirect()->route('kategori.index')
+                ->with('success', 'Kategori deleted successfully.');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->route('kategori.index')
+                ->with('error', 'Cannot delete this Kategori because it is associated with other data.');
+        }
     }
 }

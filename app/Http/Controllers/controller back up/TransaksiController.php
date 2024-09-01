@@ -12,7 +12,7 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksis = Transaksi::all();
-        return view('transaksis.index', compact('transaksis'));
+        return view('admin.transaksis.index', compact('transaksis'));
     }
 
     public function create()
