@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\Admin\ArtikelController;
+use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\TourController;
+use App\Http\Controllers\Admin\TransaksiController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\TourController;
-use App\Http\Controllers\TransaksiController;
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Route;
 
