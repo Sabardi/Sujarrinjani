@@ -1,19 +1,22 @@
 <?php
 
-<<<<<<< HEAD
+
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\TransaksiController;
-=======
+
 use App\Http\Controllers\ProfileController;
->>>>>>> main
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
+Route::get('/tes', function () {
+    return view('tes');
+})->name('tes');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-<<<<<<< HEAD
+
 // Route to filter tours by category
 Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCategory'])->name('tours.filterByCategory');
 
@@ -39,6 +42,6 @@ Route::get('bookings/create/{id}', [BookingController::class, 'create'])->name('
 
 Route::resource('transaksi', TransaksiController::class);
 
-=======
+
+
 require __DIR__.'/auth.php';
->>>>>>> main
