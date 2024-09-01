@@ -98,14 +98,19 @@
                     <li class="nav-item @yield('Tables')">
                         <a data-bs-toggle="collapse" href="#tables">
                             <i class="fas fa-table"></i>
-                            <p>Tables</p>
+                            <p>Akun</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse" id="tables">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="tables/tables.html">
-                                        <span class="sub-item">Basic Table</span>
+                                    <a href="{{ route('register-acount') }}">
+                                        <span class="sub-item">Daftar Akun</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span class="sub-item">Kelola Akun</span>
                                     </a>
                                 </li>
                             </ul>

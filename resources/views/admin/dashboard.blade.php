@@ -92,27 +92,79 @@
                         <div class="card-header">
                             <div class="card-head-row">
                                 <div class="card-title">User Statistics</div>
-                                <div class="card-tools">
-                                    <a href="#" class="btn btn-label-success btn-round btn-sm me-2">
-                                        <span class="btn-label">
-                                            <i class="fa fa-pencil"></i>
-                                        </span>
-                                        Export
-                                    </a>
-                                    <a href="#" class="btn btn-label-info btn-round btn-sm">
-                                        <span class="btn-label">
-                                            <i class="fa fa-print"></i>
-                                        </span>
-                                        Print
-                                    </a>
-                                </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="chart-container" style="min-height: 375px">
-                                <canvas id="statisticsChart"></canvas>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="date_filter">Filter by Date:</label>
+
+                                <form method="get" action="employee">
+                                    <div class="input-group">
+                                        <select class="form-select" name="date_filter">
+                                            <option value="">All Dates</option>
+                                            {{-- <option value="today" {{ $dateFilter == 'today' ? 'selected' : '' }}>Today
+                                            </option>
+                                            <option value="yesterday" {{ $dateFilter == 'yesterday' ? 'selected' : '' }}>
+                                                Yesterday
+                                            </option>
+                                            <option value="this_week" {{ $dateFilter == 'this_week' ? 'selected' : '' }}>
+                                                This Week
+                                            </option>
+                                            <option value="last_week" {{ $dateFilter == 'last_week' ? 'selected' : '' }}>
+                                                Last Week
+                                            </option>
+                                            <option value="this_month" {{ $dateFilter == 'this_month' ? 'selected' : '' }}>
+                                                This
+                                                Month</option>
+                                            <option value="last_month" {{ $dateFilter == 'last_month' ? 'selected' : '' }}>
+                                                Last
+                                                Month</option>
+                                            <option value="this_year" {{ $dateFilter == 'this_year' ? 'selected' : '' }}>
+                                                This Year
+                                            </option>
+                                            <option value="last_year" {{ $dateFilter == 'last_year' ? 'selected' : '' }}>
+                                                Last Year
+                                            </option> --}}
+                                        </select>
+                                        <button type="submit" class="btn btn-primary">Filter</button>
+                                    </div>
+                                </form>
+
                             </div>
-                            <div id="myChartLegend"></div>
+                        </div>
+
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Last Name</th>
+                                        <th>Position</th>
+                                        <th>Gender</th>
+                                        <th>E-mail</th>
+                                        <th>Date Created</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    {{-- @foreach ($employees as $employee)
+                                        <tr>
+                                            <td>{{ $employee->id }}</td>
+                                            <td>{{ $employee->name }}</td>
+                                            <td>{{ $employee->last_name }}</td>
+                                            <td>{{ $employee->position }}</td>
+                                            <td>{{ $employee->gender }}</td>
+                                            <td>{{ $employee->email }}</td>
+                                            <td>{{ $employee->created_at->format('Y-m-d H:i:s') }}</td>
+                                        </tr>
+                                    @endforeach --}}
+
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
