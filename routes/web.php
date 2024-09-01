@@ -9,6 +9,7 @@ use App\Http\Controllers\TourController;
 use App\Http\Controllers\TransaksiController;
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Route;
 
@@ -17,16 +18,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Route to filter tours by category
-Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCategory'])->name('tours.filterByCategory');
 
 Route::get('/', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::resource('artikels', ArtikelController::class);
-
-
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
+    Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCategory'])->name('tours.filterByCategory');
+    Route::resource('artikels', ArtikelController::class);
     Route::resource('kategori', KategoriController::class);
     Route::resource('tours', TourController::class);
     Route::resource('payments', PaymentController::class);
@@ -41,5 +39,7 @@ Route::middleware('auth')->group(function () {
     // register
     Route::get('register-acount', [RegisteredUserController::class, 'register'])->name('register-acount');
     Route::post('register-acount', [RegisteredUserController::class, 'store'])->name('store-acount');
+    Route::get('user-acount', [UserController::class, 'index'])->name('user-acount');
+
 });
 require __DIR__ . '/auth.php';

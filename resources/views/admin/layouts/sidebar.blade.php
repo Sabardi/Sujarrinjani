@@ -55,11 +55,13 @@
                                         <span class="sub-item">Tours</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('artikels.index') }}">
-                                        <span class="sub-item">Artikel</span>
-                                    </a>
-                                </li>
+                                @if (Auth::user()->role == 'contentmanager')
+                                    <li>
+                                        <a href="{{ route('artikels.index') }}">
+                                            <span class="sub-item">Artikel</span>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </li>
@@ -109,7 +111,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{ route('user-acount') }}">
                                         <span class="sub-item">Kelola Akun</span>
                                     </a>
                                 </li>

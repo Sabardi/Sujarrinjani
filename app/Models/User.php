@@ -44,4 +44,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function hasRole($role)
+    {
+        // Mengubah string peran menjadi array dan memeriksa apakah peran tersebut ada
+        return in_array($role, explode('|', $this->role));
+    }
 }
