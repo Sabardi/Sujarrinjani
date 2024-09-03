@@ -11,7 +11,8 @@
             <div class="flex flex-col gap-6">
                 <h1 class="text-2xl font-bold text-center lg:text-left">TO THE BEST TREK IN SOUTH ASIA</h1>
                 <h1 class="text-xl text-center text-orange-500 lg:text-left">Let’s Climb Mount Rinjani</h1>
-                <p class="text-center lg:text-left">Sujar Rinjani providing Mount Rinjani trekking packages & mountain bike tour for private and sharing
+                <p class="text-center lg:text-left">Sujar Rinjani providing Mount Rinjani trekking packages & mountain
+                    bike tour for private and sharing
                     packages with complete facilities, reasonable prices, and supported by professional and experienced
                     the Local Senaru trek organizer, guides, and porters.</p>
             </div>
@@ -21,14 +22,11 @@
     <div class="flex flex-col items-center py-8">
         <h1 class="items-center my-12 text-4xl font-bold">Climbing Packages</h1>
     </div>
-    <div class="container grid items-center grid-cols-1 gap-8 p-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
-        <x-card imageUrl="{{ asset('/img/image1.png') }}" title="Card Title"
-            description="This is a small text at the bottom of the card." />
-        <x-card imageUrl="{{ asset('/img/image1.png') }}" title="Card Title"
-            description="This is a small text at the bottom of the card." />
-        <x-card imageUrl="{{ asset('/img/image1.png') }}" title="Card Title"
-            description="This is a small text at the bottom of the card." />
-    </div>
+    {{-- <div class="container grid items-center grid-cols-1 gap-8 p-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
+        @foreach ($tours as $tour)
+        <x-card imageUrl="{{ asset($tour->image) }}" title="{{$tour->name}}" description="{{$tour->description}}" />
+        @endforeach
+    </div> --}}
     {{-- Feature On --}}
     <div class="flex flex-col items-center py-8">
         <h1 class="items-center my-12 text-4xl font-bold">Feature On</h1>
@@ -44,29 +42,33 @@
         <a class="flex items-center gap-2 text-green-500"
             href="https://www.tripadvisor.com/Attraction_Review-g3475390-d12485334-Reviews-Sujar_Rinjani-Senaru_Lombok_West_Nusa_Tenggara.html">
             <img src="{{ asset('img/tripadvisor.png') }}" class="w-8" alt="">TripAdvisor here</a>
-            
+
         <div class="container grid gap-4 mt-6 md:grid-cols-2 lg:grid-cols-4">
             <div class="flex flex-col items-center">
                 <img src="https://www.sujarrinjani.com/wp-content/uploads/2018/10/client4-free-img-1.png"
                     class="w-20 rounded-full" alt="">
-                <p class="text-center text-orange-500">"Great experience in trekking the Rinjani. Sujar was very good at organising
+                <p class="text-center text-orange-500">"Great experience in trekking the Rinjani. Sujar was very good at
+                    organising
                     the tour" <br> - Jose F</p>
             </div>
             <div class="flex flex-col items-center">
                 <img src="https://www.sujarrinjani.com/wp-content/uploads/2018/10/client3-free-img-1.png"
                     class="w-20 rounded-full" alt="">
-                <p class="text-center text-orange-500">"I went alone with a guide and porter from Sujar Rinjani company, that I recommand. Sujar is very careful and organised" <br> - Sophie </p>
+                <p class="text-center text-orange-500">"I went alone with a guide and porter from Sujar Rinjani company,
+                    that I recommand. Sujar is very careful and organised" <br> - Sophie </p>
             </div>
             <div class="flex flex-col items-center">
                 <img src="https://www.sujarrinjani.com/wp-content/uploads/2018/10/client2-free-img-1.png"
                     class="w-20 rounded-full" alt="">
-                <p class="text-center text-orange-500">"He organised us a trekking tour to rinjani and it was beatiful, i really recommend him!" <br>
+                <p class="text-center text-orange-500">"He organised us a trekking tour to rinjani and it was beatiful,
+                    i really recommend him!" <br>
                     - MaDibtceht y</p>
             </div>
             <div class="flex flex-col items-center">
                 <img src="https://www.sujarrinjani.com/wp-content/uploads/2018/10/client1-free-img-1.png"
                     class="w-20 rounded-full" alt="">
-                <p class="text-center text-orange-500">"Excellent trek with an excellent team, Sujar makes sure everything goes well and his team is adorable! " <br>
+                <p class="text-center text-orange-500">"Excellent trek with an excellent team, Sujar makes sure
+                    everything goes well and his team is adorable! " <br>
                     - emilienchebib</p>
             </div>
         </div>

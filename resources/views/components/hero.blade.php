@@ -4,11 +4,11 @@
         class="absolute inset-0 object-cover w-full h-full" id="fallbackImage">
 
     <!-- Background Video -->
-    {{-- <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
         <iframe src="https://www.youtube.com/embed/TblaoN2zY_Q?autoplay=1&mute=1&controls=0&loop=1&playlist=TblaoN2zY_Q"
             frameborder="0" allow="autoplay; fullscreen" allowfullscreen class="video-iframe" id="backgroundVideo"
             onload="hideFallbackImage()" onerror="showFallbackImage()"></iframe>
-    </div> --}}
+    </div>
 
     <!-- Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-black to-transparent"></div>
