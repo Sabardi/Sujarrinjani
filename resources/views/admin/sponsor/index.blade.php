@@ -1,14 +1,13 @@
 @extends('admin.layouts.app')
-@section('Toures', 'active')
-
+@section('Sponsor', 'active')
 @section('content')
     <div class="container">
         <div class="page-inner">
             <div class="page-header">
-                <h3 class="mb-3 fw-bold">Kategori</h3>
+                <h3 class="mb-3 fw-bold">Sponsor</h3>
                 <ul class="mb-3 breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ route('dashboard') }}">
+                        <a href="#">
                             <i class="icon-home"></i>
                         </a>
                     </li>
@@ -16,13 +15,13 @@
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('tours.index') }}">Toures</a>
+                        <a href="#">Sponsor</a>
                     </li>
                     <li class="separator">
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Kategori</a>
+                        <a href="#">Data</a>
                     </li>
                 </ul>
             </div>
@@ -33,14 +32,7 @@
                 </div>
             @endif
 
-            @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
-
-
-            <!-- Modal -->
+            <!-- Modal add data -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -49,16 +41,18 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="{{ route('kategori.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('sponsor.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+
                                 <div class="form-group">
                                     <label for="name">Name:</label>
-                                    <input type="text" name="name" id="name" class="form-control"
-                                        placeholder="Enter Name" value="{{ old('name') }}" required>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        value="{{ old('name') }}" required>
                                     @error('name')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
+
                                 <div class="form-group">
                                     <label for="image">Image:</label>
                                     <input type="file" class="form-control" id="image" name="image" required>
@@ -66,6 +60,8 @@
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
+
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save</button>
@@ -81,11 +77,10 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                {{-- <h4 class="card-title">Add Row</h4> --}}
                                 <button type="button" class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
                                     <i class="fa fa-plus"></i>
-                                    Add Kategori
+                                    Add Sponsot
                                 </button>
                             </div>
                         </div>
@@ -103,30 +98,31 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Image</th>
                                             <th>Name</th>
+                                            <th>Image</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </tfoot>
 
                                     <tbody>
-                                        @foreach ($kategori as $item)
+                                        @foreach ($sponsor as $s)
                                             <tr>
-                                                <td>{{ ++$loop->index }}</td>
-                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $s->name }}</td>
                                                 <td>
-                                                    <img src="{{ asset($item->image) }}"  alt="" style="max-width: 200px; height: auto;">
+                                                    <img src="{{ asset($s->image) }}" alt="{{ $s->name }}"
+                                                        style="max-width: 200px; height: auto;">
                                                 </td>
+
                                                 <td>
                                                     <div class="form-button-action">
                                                         <button type="button" class="btn btn-link btn-warning btn-lg"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal{{ $item->id }}">
+                                                            data-bs-target="#exampleModal{{ $s->id }}">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
-
-                                                        <a class="btn btn-link btn-info btn-lg"
-                                                            href="{{ route('tours.filterByCategory', $item->id) }}">
+                                                        <button type="button" class="btn btn-link btn-info btn-lg"
+                                                            data-bs-toggle="modal" data-bs-target="#viewModal">
                                                             <i><svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                     height="16" fill="currentColor"
                                                                     class="bi bi-eye-fill" viewBox="0 0 16 16">
@@ -134,11 +130,10 @@
                                                                     <path
                                                                         d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
                                                                 </svg></i>
-                                                        </a>
-
+                                                        </button>
                                                         <form class="form-button-action"
-                                                            action="{{ route('kategori.destroy', $item->id) }}"
-                                                            method="POST" onsubmit="return confirmDelete()">
+                                                            action="{{ route('sponsor.destroy', $s->id) }}" method="POST"
+                                                            onsubmit="return confirmDelete()">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-link btn-danger">
@@ -158,42 +153,39 @@
                                                                 return confirm('Are you sure you want to delete this item?');
                                                             }
                                                         </script>
-
                                                     </div>
                                                 </td>
                                             </tr>
-                                            {{-- edit --}}
-                                            <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
+                                            <div class="modal fade" id="exampleModal{{ $s->id }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit
-                                                                Kategori</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Sponsor
+                                                            </h1>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('kategori.update', $item->id) }}"
+                                                            <form action="{{ route('sponsor.update', $s->id) }}"
                                                                 method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PUT')
 
                                                                 <div class="form-group">
                                                                     <label for="name">Name:</label>
-                                                                    <input type="text" name="name"
-                                                                        value="{{ $item->name }}" class="form-control"
-                                                                        placeholder="Enter Name">
+                                                                    <input type="text" class="form-control"
+                                                                        id="name" name="name"
+                                                                        value="{{ $s->name }}" required>
                                                                 </div>
-
 
                                                                 <div class="form-group">
                                                                     <label for="image">Image:</label>
                                                                     <!-- Display current image if available -->
-                                                                    @if ($item->image)
+                                                                    @if ($s->image)
                                                                         <div class="mb-2">
-                                                                            <img src="{{ asset($item->image) }}"
-                                                                                alt="{{ $item->name }}"
+                                                                            <img src="{{ asset($s->image) }}"
+                                                                                alt="{{ $s->name }}"
                                                                                 style="max-width: 200px; height: auto;">
                                                                         </div>
                                                                     @endif
@@ -203,7 +195,7 @@
                                                                         <div class="text-danger">{{ $message }}</div>
                                                                     @enderror
                                                                 </div>
-
+                                                                
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Close</button>

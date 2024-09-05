@@ -22,18 +22,22 @@
     <div class="flex flex-col items-center py-8">
         <h1 class="items-center my-12 text-4xl font-bold">Climbing Packages</h1>
     </div>
-    {{-- <div class="container grid items-center grid-cols-1 gap-8 p-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
+    <div class="container grid items-center grid-cols-1 gap-8 p-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
         @foreach ($tours as $tour)
-        <x-card imageUrl="{{ asset($tour->image) }}" title="{{$tour->name}}" description="{{$tour->description}}" />
+            <a href="{{ route('artikel', $tour->id) }}" class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md') }}">
+                <x-card imageUrl="{{ asset($tour->image) }}" title="{{ $tour->name }}"
+                    description="{{ $tour->description }}" />
+            </a>
         @endforeach
-    </div> --}}
+    </div>
     {{-- Feature On --}}
     <div class="flex flex-col items-center py-8">
         <h1 class="items-center my-12 text-4xl font-bold">Feature On</h1>
-        <p>Logo</p>
-        <p>Logo</p>
-        <p>Logo</p>
-        <p>Logo</p>
+        <div class="flex">
+            @foreach ($sponsor as $s)
+                <img src="{{ asset($s->image) }}" alt="{{ $s->name }}">
+            @endforeach
+        </div>
     </div>
     {{-- They Story --}}
     <div class="flex flex-col items-center justify-around px-12 py-8">

@@ -25,12 +25,24 @@
     {{-- Follow Us --}}
     <div class="flex flex-col">
         <h1 class="text-xl font-bold">Follow Us</h1>
-        <p>Facebook</p>
-        <p>Instagram</p>
-        <p>Twitter</p>
-        <p>Whatsapp</p>
-        <p>E-Mail : sujarrinjani@gmail.com</p>
-        <p>Phone : +62 819-1700-4102</p>
+        <a href="https://www.facebook.com/sujar.rinjani.16.03.1983?mibextid=ZbWKwL">
+            <p>Facebook</p>
+        </a>
+        <a href="https://www.instagram.com/sujar_rinjani/?igsh=YzljYTk1ODg3Zg%3D%3D">
+            <p>Instagram</p>
+        </a>
+        <a href="">
+            <p>Twitter</p>
+        </a>
+        <a href="">
+            <p>Whatsapp</p>
+        </a>
+        <a href="">
+            <p>E-Mail : sujarrinjani@gmail.com</p>
+        </a>
+        <a href="">
+            <p>Phone : +62 819-1700-4102</p>
+        </a>
     </div>
 </div>
 <div class="py-5 text-center text-white bg-gray-800">Copyright © 2024 Sujar Rinjani Trekking.</div>

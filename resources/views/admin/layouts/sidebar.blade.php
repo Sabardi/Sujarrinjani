@@ -55,13 +55,13 @@
                                         <span class="sub-item">Tours</span>
                                     </a>
                                 </li>
-                                @if (Auth::user()->role == 'contentmanager')
+                                {{-- @if (Auth::user()->role == 'contentmanager') --}}
                                     <li>
                                         <a href="{{ route('artikels.index') }}">
                                             <span class="sub-item">Artikel</span>
                                         </a>
                                     </li>
-                                @endif
+                                {{-- @endif --}}
                             </ul>
                         </div>
                     </li>
@@ -97,6 +97,24 @@
                             </ul>
                         </div>
                     </li>
+
+                    <li class="nav-item @yield('Sponsor')">
+                        <a data-bs-toggle="collapse" href="#Sponsor">
+                            <i class="fas fa-pen-square"></i>
+                            <p>Sponsor</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="Sponsor">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('sponsor.index') }}">
+                                        <span class="sub-item">Sponsor</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
                     <li class="nav-item @yield('Tables')">
                         <a data-bs-toggle="collapse" href="#tables">
                             <i class="fas fa-table"></i>

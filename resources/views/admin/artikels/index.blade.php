@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('Toures', 'active')
 @section('content')
-    @if (Auth::user()->role === 'contentmanager')
+    {{-- @if (Auth::user()->role === 'contentmanager') --}}
         <div class="container">
             <div class="page-inner">
                 <div class="page-header">
@@ -47,7 +47,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="tours_id">Tour:</label>
-                                        <select class="form-control" id="tours_id" name="tours_id" required>
+                                        <select class="form-control" id="tours_id" name="tours_i>
                                             <option value="">Select tours</option>
                                             @foreach ($toures as $k)
                                                 <option value="{{ $k->id }}"
@@ -64,7 +64,7 @@
                                     <!-- Quote -->
                                     <div class="form-group">
                                         <label for="quote">Quote:</label>
-                                        <input type="text" class="form-control" id="quote" name="quote" required>
+                                        <input type="text" class="form-control" id="quote" name="quot>
                                         @error('quote')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -73,7 +73,7 @@
                                     <!-- Itinerary -->
                                     <div class="form-group">
                                         <label for="itinerary">Itinerary:</label>
-                                        <input type="text" class="form-control" id="itinerary" name="itinerary" required>
+                                        <input type="text" class="form-control" id="itinerary" name="itinerar>
                                         @error('itinerary')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -82,8 +82,7 @@
                                     <!-- Paragraphs for Day 1 -->
                                     <div class="form-group">
                                         <label for="paragrap1_day1">Paragraf 1 Hari 1:</label>
-                                        <input type="text" class="form-control" id="paragrap1_day1" name="paragrap1_day1"
-                                            required>
+                                        <input type="text" class="form-control" id="paragrap1_day1" name="paragrap1_day1">
                                         @error('paragrap1_day1')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -101,8 +100,7 @@
                                     <!-- Paragraphs for Day 2 -->
                                     <div class="form-group">
                                         <label for="paragrap1_day2">Paragraf 1 Hari 2:</label>
-                                        <input type="text" class="form-control" id="paragrap1_day2" name="paragrap1_day2"
-                                            required>
+                                        <input type="text" class="form-control" id="paragrap1_day2" name="paragrap1_day2">
                                         @error('paragrap1_day2')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -120,8 +118,7 @@
                                     <!-- Paragraphs for Day 3 -->
                                     <div class="form-group">
                                         <label for="paragrap1_day3">Paragraf 1 Hari 3:</label>
-                                        <input type="text" class="form-control" id="paragrap1_day3" name="paragrap1_day3"
-                                            required>
+                                        <input type="text" class="form-control" id="paragrap1_day3" name="paragrap1_day3">
                                         @error('paragrap1_day3')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -317,7 +314,7 @@
 
                                                                     <!-- Tour ID -->
                                                                     <select class="form-control" id="tours_id"
-                                                                        name="tours_id" required>
+                                                                        name="tours_i>
                                                                         <option value="{{ $artikel->tour->id }}">
                                                                             {{ $artikel->tour->name }}</option>
                                                                         @foreach ($toures as $k)
@@ -333,7 +330,7 @@
                                                                         <label for="quote">Quote:</label>
                                                                         <input type="text" class="form-control"
                                                                             id="quote" name="quote"
-                                                                            value="{{ $artikel->quote }}" required>
+                                                                            value="{{ $artikel->quote>
                                                                         @error('quote')
                                                                             <div class="text-danger">{{ $message }}</div>
                                                                         @enderror
@@ -344,7 +341,7 @@
                                                                         <label for="itinerary">Itinerary:</label>
                                                                         <input type="text" class="form-control"
                                                                             id="itinerary" name="itinerary"
-                                                                            value="{{ $artikel->itinerary }}" required>
+                                                                            value="{{ $artikel->itinerary>
                                                                         @error('itinerary')
                                                                             <div class="text-danger">{{ $message }}</div>
                                                                         @enderror
@@ -356,8 +353,7 @@
                                                                             1:</label>
                                                                         <input type="text" class="form-control"
                                                                             id="paragrap1_day1" name="paragrap1_day1"
-                                                                            value="{{ $artikel->paragrap1_day1 }}"
-                                                                            required>
+                                                                            value="{{ $artikel->paragrap1_day1 }}">
                                                                         @error('paragrap1_day1')
                                                                             <div class="text-danger">{{ $message }}</div>
                                                                         @enderror
@@ -380,8 +376,7 @@
                                                                             2:</label>
                                                                         <input type="text" class="form-control"
                                                                             id="paragrap1_day2" name="paragrap1_day2"
-                                                                            value="{{ $artikel->paragrap1_day2 }}"
-                                                                            required>
+                                                                            value="{{ $artikel->paragrap1_day2 }}">
                                                                         @error('paragrap1_day2')
                                                                             <div class="text-danger">{{ $message }}</div>
                                                                         @enderror
@@ -404,8 +399,7 @@
                                                                             3:</label>
                                                                         <input type="text" class="form-control"
                                                                             id="paragrap1_day3" name="paragrap1_day3"
-                                                                            value="{{ $artikel->paragrap1_day3 }}"
-                                                                            required>
+                                                                            value="{{ $artikel->paragrap1_day3 }}">
                                                                         @error('paragrap1_day3')
                                                                             <div class="text-danger">{{ $message }}</div>
                                                                         @enderror
@@ -522,9 +516,9 @@
                 </div>
             </div>
         </div>
-    @else
+    {{-- @else
         @php
             abort(403, 'Forbidden');
         @endphp
-    @endif
+    @endif --}}
 @endsection

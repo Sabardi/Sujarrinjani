@@ -1,11 +1,11 @@
-<nav x-data="{ open: false }" 
-     class="fixed z-10 w-full px-12 pt-1 text-white transition-all duration-300 ease-in-out dark:bg-gray-800 dark:border-gray-700" 
+<nav x-data="{ open: false }"
+     class="fixed z-10 w-full px-12 pt-1 text-white transition-all duration-300 ease-in-out dark:bg-gray-800 dark:border-gray-700"
      :class="{ 'backdrop-blur-lg bg-blurred text-black': window.scrollY > 10 }">    <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <!-- Logo -->
             <div class="flex items-center shrink-0">
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('home') }}">
                     <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                 </a>
             </div>
@@ -18,7 +18,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('tes')" :active="request()->routeIs('tes')">
+                    <x-nav-link :href="route('trek&tour')" :active="request()->routeIs('tes')">
                         {{ __('Trek & Tours') }}
                     </x-nav-link>
                 </div>
@@ -100,4 +100,4 @@
       }
     });
   </script>
-  
+
