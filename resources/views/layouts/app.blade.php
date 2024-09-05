@@ -51,7 +51,7 @@
         @endisset
 
         <!-- Page Content -->
-        <main class="px-12">
+        <main class="flex flex-col items-center justify-center w-full px-12 mx-auto lg:w-4/5">
             {{-- @yield('content') --}}
             {{$slot}}
         </main>

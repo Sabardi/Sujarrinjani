@@ -45,4 +45,4 @@
         </a>
     </div>
 </div>
-<div class="py-5 text-center text-white bg-gray-800">Copyright © 2024 Sujar Rinjani Trekking.</div>
+<div class="py-3 text-center text-white bg-gray-800">Copyright © 2024 Sujar Rinjani Trekking.</div>
