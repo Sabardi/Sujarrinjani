@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artikel;
 use App\Models\Kategori;
+use App\Models\Merch;
 use App\Models\Sponsor;
 use App\Models\Tour;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
     public function index(){
-        $tours = Tour::all();
+        $tours = Tour::limit(6)->get();
         $sponsor = Sponsor::all();
         return view('home', compact('tours', 'sponsor'));
     }
@@ -37,6 +38,12 @@ class FrontController extends Controller
     public function artikel(Artikel $artikel)
     {
         return view('artikel', compact('artikel'));
+    }
+
+    public function merch()
+    {
+        $merch = Merch::all();
+        return view('merch', compact('merch'));
     }
 
 }
