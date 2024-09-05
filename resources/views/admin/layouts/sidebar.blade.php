@@ -56,11 +56,11 @@
                                     </a>
                                 </li>
                                 {{-- @if (Auth::user()->role == 'contentmanager') --}}
-                                    <li>
-                                        <a href="{{ route('artikels.index') }}">
-                                            <span class="sub-item">Artikel</span>
-                                        </a>
-                                    </li>
+                                <li>
+                                    <a href="{{ route('artikels.index') }}">
+                                        <span class="sub-item">Artikel</span>
+                                    </a>
+                                </li>
                                 {{-- @endif --}}
                             </ul>
                         </div>
@@ -109,6 +109,23 @@
                                 <li>
                                     <a href="{{ route('sponsor.index') }}">
                                         <span class="sub-item">Sponsor</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item @yield('merch')">
+                        <a data-bs-toggle="collapse" href="#merch">
+                            <i class="fas fa-pen-square"></i>
+                            <p>Merch</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="merch">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('merch.index') }}">
+                                        <span class="sub-item">Merchandiser</span>
                                     </a>
                                 </li>
                             </ul>

@@ -4,6 +4,7 @@
 use App\Http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\Admin\MerchController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\TourController;
@@ -22,6 +23,9 @@ Route::get('/', function () {
 Route::get('/', [FrontController::class, 'index'])->name('home');
 
 Route::get('/trek tour',[FrontController::class, 'trektour'])->name('trek&tour');
+
+// merch
+Route::get('/merchandiser',[FrontController::class, 'merch'])->name('merchandiser');
 
 // untuk artikel nya
 Route::get('/artikel/{artikel}', [FrontController::class, 'artikel'])->name('artikel');
@@ -42,6 +46,7 @@ Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
     Route::get('bookings/create/{id}', [BookingController::class, 'create'])->name('bookings.create');
     Route::resource('transaksi', TransaksiController::class);
     Route::resource('sponsor', SponsorController::class);
+    Route::resource('merch', MerchController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
