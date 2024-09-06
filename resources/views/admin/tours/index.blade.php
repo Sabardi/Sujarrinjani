@@ -39,7 +39,7 @@
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('tours.index') }}">Toures</a>
+                        <a href="{{ route('tours.index') }}">Tours</a>
                     </li>
                     <li class="separator">
                         <i class="icon-arrow-right"></i>

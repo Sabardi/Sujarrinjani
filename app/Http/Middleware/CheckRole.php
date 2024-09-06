@@ -20,6 +20,7 @@ class CheckRole
             // return redirect('login');
             abort(403, 'Belum Mempunyai account');
         }
+
         $roles = explode('|', $roles);
          //explode mengubah data dari string menjadi array
          //string mana yang diubah ? yaitu admin, manager, staff, pelanggan

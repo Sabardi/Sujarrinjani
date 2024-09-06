@@ -13,13 +13,13 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikels = Artikel::with('tour')->get();
-        $toures = Tour::all();
-        return view('admin.artikels.index', compact('artikels', 'toures'));
+        return view('admin.artikels.index', compact('artikels'));
     }
 
     public function create()
     {
-        return view('admin.artikels.create');
+        $tours = Tour::all();
+        return view('admin.artikels.create', compact('tours'));
     }
 
     public function show(Artikel $artikel)
@@ -35,9 +35,9 @@ class ArtikelController extends Controller
             'itinerary' => 'required',
             'paragrap1_day1' => 'required',
             'paragrap2_day1' => 'nullable',
-            'paragrap1_day2' => 'required',
+            'paragrap1_day2' => 'nullable',
             'paragrap2_day2' => 'nullable',
-            'paragrap1_day3' => 'required',
+            'paragrap1_day3' => 'nullable',
             'paragrap2_day3' => 'nullable',
             'paragrap1_day4' => 'nullable',
             'paragrap2_day4' => 'nullable',
@@ -67,7 +67,8 @@ class ArtikelController extends Controller
 
     public function edit(Artikel $artikel)
     {
-        return view('admin.artikels.edit', compact('artikel'));
+        $tours = Tour::all();
+        return view('admin.artikels.edit', compact('artikel', 'tours'));
     }
 
     public function update(Request $request, Artikel $artikel)
@@ -91,6 +92,24 @@ class ArtikelController extends Controller
         ]);
 
         $data = $request->all();
+
+
+        // Penghapusan gambar jika diatur
+        for ($i = 1; $i <= 4; $i++) {
+            $deleteField = 'delete_day' . $i . '_image';
+            $imageField = 'day' . $i . '_image';
+
+            if ($request->input($deleteField) == 1) {
+                if ($artikel->$imageField) {
+                    // Hapus gambar dari direktori
+                    if (file_exists(public_path($artikel->$imageField))) {
+                        unlink(public_path($artikel->$imageField));
+                    }
+                    // Set gambar menjadi null di database
+                    $artikel->$imageField = null;
+                }
+            }
+        }
 
         // Handle image uploads
         for ($i = 0; $i <= 4; $i++) {

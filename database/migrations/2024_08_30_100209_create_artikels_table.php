@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('tours_id')->constrained('tours');
             $table->string('quote');
             $table->string('itinerary');
-            $table->string('day1_image')->nullable();
+            $table->string('day1_image');
             $table->string('paragrap1_day1');
             $table->string('paragrap2_day1')->nullable();
             $table->string('day2_image')->nullable();
-            $table->string('paragrap1_day2');
+            $table->string('paragrap1_day2')->nullable();
             $table->string('paragrap2_day2')->nullable();
             $table->string('day3_image')->nullable();
             $table->string('paragrap1_day3')->nullable();
