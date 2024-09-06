@@ -26,6 +26,8 @@ Route::get('/trek tour',[FrontController::class, 'trektour'])->name('trek&tour')
 
 // merch
 Route::get('/merchandiser',[FrontController::class, 'merch'])->name('merchandiser');
+Route::get('/booking',[FrontController::class, 'booking'])->name('booking');
+Route::post('/booking',[FrontController::class, 'bookingstore'])->name('bookingstore');
 
 // untuk artikel nya
 Route::get('/artikel/{artikel}', [FrontController::class, 'artikel'])->name('artikel');
