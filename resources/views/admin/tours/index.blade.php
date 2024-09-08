@@ -76,7 +76,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <a href="{{ route('tours.create') }}" class="btn btn-primary btn-round ms-auto">
+                                <a href="{{ route('tours.create') }}" target="blank" class="btn btn-primary btn-round ms-auto">
                                     <i class="fa fa-plus"></i>
                                     Add Toures
                                 </a>
