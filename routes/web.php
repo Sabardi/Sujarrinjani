@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\Admin\GambarController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\MerchController;
 use App\Http\Controllers\Admin\PaymentController;
@@ -47,6 +48,7 @@ Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
     Route::resource('transaksi', TransaksiController::class);
     Route::resource('sponsor', SponsorController::class);
     Route::resource('merch', MerchController::class);
+    Route::resource('gambar', GambarController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
