@@ -37,10 +37,6 @@ class FrontController extends Controller
         return view('toures', compact('tours'));
     }
 
-    public function artikel(Artikel $artikel)
-    {
-        return view('artikel', compact('artikel'));
-    }
 
     public function merch()
     {

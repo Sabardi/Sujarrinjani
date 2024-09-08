@@ -115,23 +115,6 @@
                         </div>
                     </li>
 
-                    <li class="nav-item @yield('Sponsor')">
-                        <a data-bs-toggle="collapse" href="#Artikel">
-                            <i class="fas fa-pen-square"></i>
-                            <p>Artikel</p>
-                            <span class="caret"></span>
-                        </a>
-                        <div class="collapse" id="Artikel">
-                            <ul class="nav nav-collapse">
-                                <li>
-                                    <a href="{{ route('artikels.index') }}">
-                                        <span class="sub-item">Content</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
                     <li class="nav-item @yield('merch')">
                         <a data-bs-toggle="collapse" href="#merch">
                             <i class="fas fa-pen-square"></i>

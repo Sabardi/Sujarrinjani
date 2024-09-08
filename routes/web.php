@@ -1,7 +1,6 @@
 <?php
 
 
-use App\Http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\MerchController;
@@ -29,8 +28,7 @@ Route::get('/merchandiser',[FrontController::class, 'merch'])->name('merchandise
 Route::get('/booking',[FrontController::class, 'booking'])->name('booking');
 Route::post('/booking',[FrontController::class, 'bookingstore'])->name('bookingstore');
 
-// untuk artikel nya
-Route::get('/artikel/{artikel}', [FrontController::class, 'artikel'])->name('artikel');
+// filter
 Route::get('/tours/category/{kategori}/show', [FrontController::class, 'filterByCategory'])->name('tours.ByCategory');
 
 // artikel show
@@ -40,7 +38,6 @@ Route::get('/dashboard/admin', function () {
 
 Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
     Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCategory'])->name('tours.filterByCategory');
-    Route::resource('artikels', ArtikelController::class);
     Route::resource('kategori', KategoriController::class);
     Route::resource('tours', TourController::class);
     Route::resource('payments', PaymentController::class);
