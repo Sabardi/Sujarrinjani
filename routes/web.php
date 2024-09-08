@@ -40,6 +40,7 @@ Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
     Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCategory'])->name('tours.filterByCategory');
     Route::resource('kategori', KategoriController::class);
     Route::resource('tours', TourController::class);
+
     Route::resource('payments', PaymentController::class);
     Route::resource('bookings', BookingController::class);
     Route::get('bookings/create/{id}', [BookingController::class, 'create'])->name('bookings.create');

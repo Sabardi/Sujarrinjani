@@ -23,7 +23,28 @@
             {{ session('error') }}
         </div>
     @endif
+    <style>
+        .modal-dialog {
+            max-width: 80%;
+            /* Atur lebar modal sesuai kebutuhan */
+            margin: 1.75rem auto;
+            /* Menempatkan modal di tengah */
+        }
 
+        .modal-content {
+            border-radius: 0.5rem;
+            /* Atur radius border jika diperlukan */
+            padding: 2rem;
+            /* Atur padding di dalam modal */
+        }
+
+        @media (max-width: 768px) {
+            .modal-dialog {
+                max-width: 90%;
+                /* Lebar modal lebih besar pada layar kecil */
+            }
+        }
+    </style>
 
     <div class="container">
         <div class="page-inner">
@@ -50,89 +71,15 @@
                 </ul>
             </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Tour</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{ route('tours.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-
-                                <div class="form-group">
-                                    <label for="name">Name:</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        value="{{ old('name') }}" required>
-                                    @error('name')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="description">Description:</label>
-                                    <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
-                                    @error('description')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="price">Price:</label>
-                                    <input type="text" class="form-control" id="price" name="price"
-                                        value="{{ old('price') }}" required>
-                                    @error('price')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="kategori_id">Category:</label>
-                                    <select class="form-control" id="kategori_id" name="kategori_id" required>
-                                        <option value="">Select a category</option>
-                                        @foreach ($kategoris as $category)
-                                            <option value="{{ $category->id }}"
-                                                {{ old('kategori_id') == $category->id ? 'selected' : '' }}>
-                                                {{ $category->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    @error('kategori_id')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="image">Image:</label>
-                                    <input type="file" class="form-control" id="image" name="image" required>
-                                    @error('image')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <button type="button" class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                <a href="{{ route('tours.create') }}" class="btn btn-primary btn-round ms-auto">
                                     <i class="fa fa-plus"></i>
                                     Add Toures
-                                </button>
+                                </a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -175,13 +122,11 @@
                                                 </td>
                                                 <td>
                                                     <div class="form-button-action">
-                                                        <button type="button" class="btn btn-link btn-warning btn-lg"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal{{ $tour->id }}">
+                                                        <a href="{{ route('tours.edit', $tour->id) }}" class="btn btn-link btn-warning btn-lg">
                                                             <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-link btn-info btn-lg"
-                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        </a>
+                                                        <a href="{{ route('tours.show', $tour->id) }}"
+                                                            class="btn btn-link btn-primary btn-lg">
                                                             <i><svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                     height="16" fill="currentColor"
                                                                     class="bi bi-eye-fill" viewBox="0 0 16 16">
@@ -189,10 +134,10 @@
                                                                     <path
                                                                         d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
                                                                 </svg></i>
-                                                        </button>
+                                                        </a>
                                                         <form class="form-button-action"
-                                                            action="{{ route('tours.destroy', $tour->id) }}"
-                                                            method="POST" onsubmit="return confirmDelete()">
+                                                            action="{{ route('tours.destroy', $tour->id) }}" method="POST"
+                                                            onsubmit="return confirmDelete()">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-link btn-danger">
@@ -215,85 +160,6 @@
                                                     </div>
                                                 </td>
                                             </tr>
-
-                                            <div class="modal fade" id="exampleModal{{ $tour->id }}" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Tour
-                                                            </h1>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="{{ route('tours.update', $tour->id) }}"
-                                                                method="POST" enctype="multipart/form-data">
-                                                                @csrf
-                                                                @method('PUT')
-
-                                                                <div class="form-group">
-                                                                    <label for="name">Name:</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="name" name="name"
-                                                                        value="{{ $tour->name }}" required>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label for="description">Description:</label>
-                                                                    <textarea class="form-control" id="description" name="description">{{ $tour->description }}</textarea>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label for="price">Price:</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="price" name="price"
-                                                                        value="{{ $tour->price }}" required>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label for="kategori_id">Category:</label>
-                                                                    <select class="form-control" id="kategori_id"
-                                                                        name="kategori_id" required>
-                                                                        @foreach ($kategoris as $category)
-                                                                            <option value="{{ $category->id }}"
-                                                                                {{ $tour->kategori_id == $category->id ? 'selected' : '' }}>
-                                                                                {{ $category->name }}
-                                                                            </option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                    @error('kategori_id')
-                                                                        <div class="text-danger">{{ $message }}</div>
-                                                                    @enderror
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label for="image">Image:</label>
-                                                                    <!-- Display current image if available -->
-                                                                    @if ($tour->image)
-                                                                        <div class="mb-2">
-                                                                            <img src="{{ asset($tour->image) }}"
-                                                                                alt="{{ $tour->name }}"
-                                                                                style="max-width: 200px; height: auto;">
-                                                                        </div>
-                                                                    @endif
-                                                                    <input type="file" class="form-control"
-                                                                        id="image" name="image">
-                                                                    @error('image')
-                                                                        <div class="text-danger">{{ $message }}</div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary">Save</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         @endforeach
                                     </tbody>
                                 </table>

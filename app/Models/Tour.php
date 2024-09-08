@@ -9,7 +9,7 @@ class Tour extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'kategori_id', 'image'];
+    protected $fillable = ['name', 'description', 'price', 'kategori_id', 'image', 'content'];
 
     public function kategori()
     {
@@ -19,11 +19,6 @@ class Tour extends Model
     public function bookings()
     {
         return $this->hasMany(Booking::class, 'tours_id');
-    }
-
-    public function artikel()
-    {
-        return $this->hasOne(Artikel::class, 'tours_id');
     }
 }
 

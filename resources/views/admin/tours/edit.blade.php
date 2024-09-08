@@ -1,49 +1,153 @@
-@extends('layout.app')
-
+@extends('admin.layouts.app')
+@section('Toures', 'active')
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if ($message = Session::get('success'))
+        <div class="mt-3 alert alert-success">
+            {{ $message }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+    <style>
+        .modal-dialog {
+            max-width: 80%;
+            /* Atur lebar modal sesuai kebutuhan */
+            margin: 1.75rem auto;
+            /* Menempatkan modal di tengah */
+        }
+
+        .modal-content {
+            border-radius: 0.5rem;
+            /* Atur radius border jika diperlukan */
+            padding: 2rem;
+            /* Atur padding di dalam modal */
+        }
+
+        @media (max-width: 768px) {
+            .modal-dialog {
+                max-width: 90%;
+                /* Lebar modal lebih besar pada layar kecil */
+            }
+        }
+    </style>
+
     <div class="container">
-        <h1>Edit Tour</h1>
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-            </div>
-        @endif
-
-        <form action="{{ route('tours.update', $tour->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ $tour->name }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea class="form-control" id="description" name="description">{{ $tour->description }}</textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="text" class="form-control" id="price" name="price" value="{{ $tour->price }}" required>
+        <div class="page-inner">
+            <div class="page-header">
+                {{-- <h3 class="mb-3 fw-bold">Tour</h3> --}}
+                <ul class="mb-3 breadcrumbs">
+                    <li class="nav-home">
+                        <a href="{{ route('dashboard') }}">
+                            <i class="icon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('tours.index') }}">Tours</a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Tours create</a>
+                    </li>
+                </ul>
             </div>
 
-            <div class="form-group">
-                <label for="kategori_id">Category:</label>
-                <input type="text" class="form-control" id="kategori_id" name="kategori_id" value="{{ $tour->kategori_id }}" required>
-            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <form action="{{ route('tours.update', $tour->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
 
-            <div class="form-group">
-                <label for="image">Image:</label>
-                <input type="text" class="form-control" id="image" name="image" value="{{ $tour->image }}">
-            </div>
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    value="{{ $tour->name }}" required>
+                            </div>
 
-            <button type="submit" class="btn btn-primary">Update</button>
-        </form>
+                            <div class="form-group">
+                                <label for="description">Description:</label>
+                                <textarea class="form-control" id="description" name="description">{{ $tour->description }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Price:</label>
+                                <input type="text" class="form-control" id="price" name="price"
+                                    value="{{ $tour->price }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kategori_id">Category:</label>
+                                <select class="form-control" id="kategori_id" name="kategori_id" required>
+                                    @foreach ($kategoris as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ $tour->kategori_id == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('kategori_id')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Image:</label>
+                                <!-- Display current image if available -->
+                                @if ($tour->image)
+                                    <div class="mb-2">
+                                        <img src="{{ asset($tour->image) }}" alt="{{ $tour->name }}"
+                                            style="max-width: 200px; height: auto;">
+                                    </div>
+                                @endif
+                                <input type="file" class="form-control" id="image" name="image">
+                                @error('image')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content">Content:</label>
+                                <textarea class="form-control @error('content') is-invalid @enderror" name="content" rows="90">{{ $tour->content }}</textarea>
+                                @error('content')
+                                    <div class="mt-2 alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+                            <script>
+                                CKEDITOR.replace('content');
+                            </script>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

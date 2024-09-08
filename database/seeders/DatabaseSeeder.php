@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
             ToursTableSeeder::class,
             PaymentsTableSeeder::class,
             SponsorsTableSeeder::class,
-            ArtikelsTableSeeder::class,
         ]);
     }
 }

@@ -19,7 +19,8 @@ class TourController extends Controller
 
     public function create()
     {
-        return view('tours.create');
+        $kategoris = Kategori::all();
+        return view('admin.tours.create', compact('kategoris'));
     }
 
     public function store(Request $request)
@@ -29,6 +30,7 @@ class TourController extends Controller
             'description' => 'nullable|string|max:255',
             'price' => 'required|numeric',
             'kategori_id' => 'required|exists:kategoris,id',
+            'content' => 'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Validate as an image
         ]);
 
@@ -48,12 +50,13 @@ class TourController extends Controller
 
     public function show(Tour $tour)
     {
-        return view('tours.show', compact('tour'));
+        return view('admin.tours.show', compact('tour'));
     }
 
     public function edit(Tour $tour)
     {
-        return view('tours.edit', compact('tour'));
+        $kategoris = Kategori::all();
+        return view('admin.tours.edit', compact('tour', 'kategoris'));
     }
 
     public function update(Request $request, Tour $tour)

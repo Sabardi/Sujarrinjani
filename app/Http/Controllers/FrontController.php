@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artikel;
 use App\Models\Booking;
 use App\Models\Kategori;
 use App\Models\Merch;
