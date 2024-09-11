@@ -40,7 +40,7 @@
                     <li class="nav-item @yield('Toures')">
                         <a data-bs-toggle="collapse" href="#base">
                             <i class="fas fa-layer-group"></i>
-                            <p>Toures</p>
+                            <p>Tours</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse" id="base">
@@ -56,11 +56,11 @@
                                     </a>
                                 </li>
                                 {{-- @if (Auth::user()->role == 'contentmanager') --}}
-                                <li>
+                                {{-- <li>
                                     <a href="{{ route('artikels.index') }}">
                                         <span class="sub-item">Artikel</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 {{-- @endif --}}
                             </ul>
                         </div>
@@ -131,6 +131,24 @@
                             </ul>
                         </div>
                     </li>
+
+                    <li class="nav-item @yield('merch')">
+                        <a data-bs-toggle="collapse" href="#image">
+                            <i class="fas fa-pen-square"></i>
+                            <p>Source image</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="image">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('gambar.index') }}">
+                                        <span class="sub-item">image</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
 
                     <li class="nav-item @yield('Tables')">
                         <a data-bs-toggle="collapse" href="#tables">

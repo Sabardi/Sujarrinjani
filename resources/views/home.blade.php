@@ -24,7 +24,7 @@
     </div>
     <div class="container grid items-center grid-cols-1 gap-8 p-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
         @foreach ($tours as $tour)
-            <a href="{{ route('artikel', $tour->id) }}" class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md') }}">
+            <a href="" class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md') }}">
                 <x-card imageUrl="{{ asset($tour->image) }}" title="{{ $tour->name }}"
                     description="{{ $tour->description }}" />
             </a>

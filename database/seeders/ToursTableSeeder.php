@@ -23,6 +23,7 @@ class ToursTableSeeder extends Seeder
                 'price' => 1500,
                 'kategori_id' => 1, // Start Sembalun
                 'image' => 'images/mount-rinjani.jpg',
+                'content' => ' ',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -33,6 +34,7 @@ class ToursTableSeeder extends Seeder
                 'price' => 800,
                 'kategori_id' => 2, // Start Senaru
                 'image' => 'images/senaru-village.jpg',
+                'content' => ' ',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -43,6 +45,7 @@ class ToursTableSeeder extends Seeder
                 'price' => 1200,
                 'kategori_id' => 3, // Start Torean
                 'image' => 'images/torean-adventure.jpg',
+                'content' => ' ',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -53,6 +56,7 @@ class ToursTableSeeder extends Seeder
                 'price' => 1000,
                 'kategori_id' => 1, // Start Sembalun
                 'image' => 'images/sembalun-sunrise.jpg',
+                'content' => ' ',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -63,6 +67,7 @@ class ToursTableSeeder extends Seeder
                 'price' => 950,
                 'kategori_id' => 2,
                 'image' => 'images/senaru-waterfall.jpg',
+                'content' => ' ',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
