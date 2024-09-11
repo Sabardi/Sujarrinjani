@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }"
-    class="fixed z-10 w-full px-6 py-3 transition-all duration-300 ease-in-out bg-white lg:px-0 dark:bg-gray-800 dark:border-gray-700"
+    class="fixed z-10 w-full px-6 py-3 transition-all duration-300 ease-in-out bg-white shadow lg:px-0 dark:bg-gray-800 dark:border-gray-700"
     :class="{ 'backdrop-blur-lg bg-blurred text-black': window.scrollY > 10 }">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto lg:w-4/5 sm:px-6 lg:px-0">
@@ -16,7 +16,7 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('trek&tour')" :active="request()->routeIs('tes')">
+                    <x-nav-link :href="route('trek&tour')" :active="request()->routeIs('trek&tour')">
                         {{ __('Trek & Tours') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">

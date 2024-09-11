@@ -33,9 +33,9 @@
     {{-- Feature On --}}
     <div class="flex flex-col items-center py-8">
         <h1 class="items-center my-12 text-4xl font-bold">Feature On</h1>
-        <div class="flex">
+        <div class="flex flex-wrap items-center justify-around gap-4">
             @foreach ($sponsor as $s)
-                <img src="{{ asset($s->image) }}" alt="{{ $s->name }}" class="w-1/5">
+                <img src="{{ asset($s->image) }}" alt="{{ $s->name }}" class="w-1/6 h-1/6">
             @endforeach
         </div>
     </div>
