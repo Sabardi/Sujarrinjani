@@ -5,7 +5,7 @@
     <div class="container">
         <div class="page-inner">
             <div class="page-header">
-                <h3 class="mb-3 fw-bold">Kategori</h3>
+                <h3 class="mb-3 fw-bold">Booking</h3>
                 <ul class="mb-3 breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -22,7 +22,7 @@
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Kategori</a>
+                        <a href="#">Booking</a>
                     </li>
                 </ul>
             </div>
