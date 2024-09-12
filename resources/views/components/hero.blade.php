@@ -1,7 +1,7 @@
 <div class="relative w-full h-screen overflow-hidden">
     <div class="flex w-4/5 h-screen px-4 mx-auto sm:px-6 lg:px-8">
         <!-- Fallback Image -->
-        <img src="{{ asset('img/fallback-image.jpg') }}" alt="Fallback Image"
+        <img src="{{ asset('img/gunung-rinjani2.jpg') }}" alt="Fallback Image"
             class="absolute inset-0 object-cover w-full h-full" id="fallbackImage">
 
         <!-- Background Video -->
@@ -13,7 +13,7 @@
         </div> --}}
 
         <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black to-transparent"></div>
+        {{-- <div class="absolute inset-0 bg-gradient-to-b from-black to-transparent"></div> --}}
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90"></div>
         {{-- <div class="absolute inset-0 bg-black/40"></div> --}}
 
