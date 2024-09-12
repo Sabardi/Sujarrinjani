@@ -9,8 +9,11 @@
         <p>Tujuan belom tersedia</p>
     @else
         @foreach ($tours as $t)
+        <x-card imageUrl="{{ asset($t->image) }}" title="{{ $t->name }}" description="{{ $t->description }}" />
+        @endforeach
+        @foreach ($tours as $t)
+        
             <a href="">
-                <x-card imageUrl="{{ asset($t->image) }}" title="{{ $t->name }}" description="{{ $t->description }}" />
                 <div class="">
                     price {{ $t->price }}
                 </div>

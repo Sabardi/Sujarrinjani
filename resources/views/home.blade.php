@@ -7,7 +7,7 @@
     <div class="flex flex-col items-center py-8 dark:text-white">
         <h1 class="items-center my-12 text-4xl font-bold">Welcome</h1>
         <div class="flex flex-col gap-4 p-10 lg:flex-row">
-            <img src="{{ asset('img/sujar-on-top.jpg') }}" alt="" class="object-cover w-1/3">
+            <img src="{{ asset('img/sujar-on-top.jpg') }}" alt="" class="object-cover lg:w-1/2">
             <div class="flex flex-col gap-6">
                 <h1 class="text-2xl font-bold text-center lg:text-left">TO THE BEST TREK IN SOUTH ASIA</h1>
                 <h1 class="text-xl text-center text-orange-500 lg:text-left">Let’s Climb Mount Rinjani</h1>
@@ -88,5 +88,5 @@
         </div>
     </div>
 </x-app-layout>
-{{-- Footer --}}
 <x-footer />
+{{-- Footer --}}

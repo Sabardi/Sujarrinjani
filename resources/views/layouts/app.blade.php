@@ -54,6 +54,11 @@
         <main class="flex flex-col items-center justify-center w-full px-12 mx-auto lg:w-4/5">
             {{-- @yield('content') --}}
             {{$slot}}
+            <div class="fixed bottom-5 right-5 z-50">
+                <a href="https://wa.me/6283114231230" target="_blank" class="block w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-full h-full p-2 rounded-full">
+                </a>
+            </div>            
         </main>
     </div>
 </body>
