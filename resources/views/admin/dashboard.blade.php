@@ -87,88 +87,38 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="card card-round">
                         <div class="card-header">
                             <div class="card-head-row">
-                                <div class="card-title">User Statistics</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="date_filter">Filter by Date:</label>
-
-                                <form method="get" action="employee">
-                                    <div class="input-group">
-                                        <select class="form-select" name="date_filter">
-                                            <option value="">All Dates</option>
-                                            {{-- <option value="today" {{ $dateFilter == 'today' ? 'selected' : '' }}>Today
-                                            </option>
-                                            <option value="yesterday" {{ $dateFilter == 'yesterday' ? 'selected' : '' }}>
-                                                Yesterday
-                                            </option>
-                                            <option value="this_week" {{ $dateFilter == 'this_week' ? 'selected' : '' }}>
-                                                This Week
-                                            </option>
-                                            <option value="last_week" {{ $dateFilter == 'last_week' ? 'selected' : '' }}>
-                                                Last Week
-                                            </option>
-                                            <option value="this_month" {{ $dateFilter == 'this_month' ? 'selected' : '' }}>
-                                                This
-                                                Month</option>
-                                            <option value="last_month" {{ $dateFilter == 'last_month' ? 'selected' : '' }}>
-                                                Last
-                                                Month</option>
-                                            <option value="this_year" {{ $dateFilter == 'this_year' ? 'selected' : '' }}>
-                                                This Year
-                                            </option>
-                                            <option value="last_year" {{ $dateFilter == 'last_year' ? 'selected' : '' }}>
-                                                Last Year
-                                            </option> --}}
-                                        </select>
-                                        <button type="submit" class="btn btn-primary">Filter</button>
-                                    </div>
-                                </form>
-
+                                <div class="card-title">Transaksi Statistics</div>
+                                <div class="card-tools">
+                                    <a href="#" class="btn btn-label-success btn-round btn-sm me-2">
+                                        <span class="btn-label">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        Export
+                                    </a>
+                                    <a href="#" class="btn btn-label-info btn-round btn-sm">
+                                        <span class="btn-label">
+                                            <i class="fa fa-print"></i>
+                                        </span>
+                                        Print
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
                         <div class="card-body">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Last Name</th>
-                                        <th>Position</th>
-                                        <th>Gender</th>
-                                        <th>E-mail</th>
-                                        <th>Date Created</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-
-                                    {{-- @foreach ($employees as $employee)
-                                        <tr>
-                                            <td>{{ $employee->id }}</td>
-                                            <td>{{ $employee->name }}</td>
-                                            <td>{{ $employee->last_name }}</td>
-                                            <td>{{ $employee->position }}</td>
-                                            <td>{{ $employee->gender }}</td>
-                                            <td>{{ $employee->email }}</td>
-                                            <td>{{ $employee->created_at->format('Y-m-d H:i:s') }}</td>
-                                        </tr>
-                                    @endforeach --}}
-
-
-                                </tbody>
-                            </table>
+                            <div class="chart-container" style="min-height: 375px">
+                                <canvas id="statisticsChart"></canvas>
+                            </div>
+                            <div id="myChartLegend"></div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-4">
                     <div class="card card-round">
@@ -177,8 +127,9 @@
                                 <div class="card-title">New Customers</div>
                                 <div class="card-tools">
                                     <div class="dropdown">
-                                        <button class="btn btn-icon btn-clean me-0" type="button" id="dropdownMenuButton"
-                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button class="btn btn-icon btn-clean me-0" type="button"
+                                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
                                             <i class="fas fa-ellipsis-h"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -296,3 +247,70 @@
         </div>
     </div>
 @endsection
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ambil data dari controller
+        const data = @json($data);
+
+        // Inisialisasi canvas untuk chart
+        const ctx = document.getElementById('statisticsChart').getContext('2d');
+
+        // Buat chart
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.months.map(month => `Month ${month}`), // Label bulan
+                datasets: [
+                    {
+                        label: 'Bookings',
+                        data: data.bookings, // Data bookings
+                        borderColor: 'rgba(75, 192, 192, 1)', // Warna garis bookings
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)', // Warna latar bookings
+                        fill: true,
+                    },
+                    {
+                        label: 'Transaksi',
+                        data: data.transaksi, // Data transaksi
+                        borderColor: 'rgba(255, 99, 132, 1)', // Warna garis transaksi
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)', // Warna latar transaksi
+                        fill: true,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Months' // Judul sumbu X
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Count' // Judul sumbu Y
+                        },
+                        beginAtZero: true // Mulai dari 0
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top', // Posisi legenda
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
