@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id(); // Ini adalah kolom auto_increment dan primary key
             $table->foreignId('tours_id')->constrained('tours');
+            $table->string('kode_booking');
             $table->string('fullName', 45);
             $table->string('email', 45);
             $table->string('pasport_number', 45);

@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\Admin\HomeController as AdminController;
 use App\Http\Controllers\Admin\GambarController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\MerchController;
@@ -22,20 +23,18 @@ Route::get('/', function () {
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
 
-Route::get('/trek tour',[FrontController::class, 'trektour'])->name('trek&tour');
+Route::get('/trek tour', [FrontController::class, 'trektour'])->name('trek&tour');
 
 // merch
-Route::get('/merchandiser',[FrontController::class, 'merch'])->name('merchandiser');
-Route::get('/booking',[FrontController::class, 'booking'])->name('booking');
-Route::post('/booking',[FrontController::class, 'bookingstore'])->name('bookingstore');
+Route::get('/merchandiser', [FrontController::class, 'merch'])->name('merchandiser');
+Route::get('/booking', [FrontController::class, 'booking'])->name('booking');
+Route::post('/booking', [FrontController::class, 'bookingstore'])->name('bookingstore');
 
 // filter
 Route::get('/tours/category/{kategori}/show', [FrontController::class, 'filterByCategory'])->name('tours.ByCategory');
 
 // artikel show
-Route::get('/dashboard/admin', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/admin', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
     Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCategory'])->name('tours.filterByCategory');
@@ -61,3 +60,18 @@ Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+// public function index()
+// {
+//     // Data dummy atau ambil data asli dari database
+//     $users = User::selectRaw('DATE(created_at) as date, COUNT(*) as count')
+//                 ->groupBy('date')
+//                 ->orderBy('date')
+//                 ->get();
+
+//     // Ekstraksi data untuk Chart.js
+//     $labels = $users->pluck('date');  // Array of dates
+//     $data = $users->pluck('count');   // Array of user counts
+
+//     return view('statistics.index', compact('labels', 'data'));
+// }

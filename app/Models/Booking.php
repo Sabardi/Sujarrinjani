@@ -13,6 +13,7 @@ class Booking extends Model
     protected $fillable = [
         'tours_id',
         'fullName',
+        'kode_booking',
         'email',
         'pasport_number',
         'nationality',
@@ -21,6 +22,7 @@ class Booking extends Model
         'pickup_time',
         'pickup_location',
         'add_message'];
+
 
     public function tour()
     {

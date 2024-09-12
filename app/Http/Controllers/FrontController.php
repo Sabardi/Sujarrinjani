@@ -50,6 +50,7 @@ class FrontController extends Controller
 
     public function bookingstore(Request $request)
     {
+        $nomer_boking = 'BKSJR-' . strtoupper(date('Ymd-His') . uniqid());
         // Validasi data
         $validatedData = $request->validate([
             'tours_id' => 'required',
@@ -65,6 +66,7 @@ class FrontController extends Controller
         ]);
 
         // Simpan booking ke database
+        $validatedData['kode_booking'] = $nomer_boking;
         $booking = Booking::create($validatedData);
 
         // Format pesan untuk WhatsApp
