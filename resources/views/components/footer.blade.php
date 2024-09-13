@@ -1,4 +1,4 @@
-<div class="flex flex-wrap justify-between gap-4 px-12 py-8 text-white bg-gray-900">
+<div class="flex flex-wrap justify-between gap-4 px-12 py-8 text-white bg-gray-900 dark:bg-gray-800">
     {{-- Surjar --}}
     <div class="flex flex-col gap-4 lg:w-1/3">
         <h1 class="text-xl font-bold text-orange-500">SUJAR RINJANI</h1>

@@ -24,10 +24,10 @@
     </div>
     <div class="container grid items-center grid-cols-1 gap-8 p-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
         @foreach ($tours as $tour)
-            <a href="" class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md') }}">
-                <x-card imageUrl="{{ asset($tour->image) }}" title="{{ $tour->name }}"
-                    description="{{ $tour->description }}" />
-            </a>
+        <a href="" class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md') }}">
+            <x-card imageUrl="{{ asset($tour->image) }}" title="{{ $tour->name }}"
+                description="{{ $tour->description }}" />
+        </a>
         @endforeach
     </div>
     {{-- Feature On --}}
@@ -35,7 +35,7 @@
         <h1 class="items-center my-12 text-4xl font-bold">Feature On</h1>
         <div class="flex flex-wrap items-center justify-around gap-4">
             @foreach ($sponsor as $s)
-                <img src="{{ asset($s->image) }}" alt="{{ $s->name }}" width="6%">
+            <img src="{{ asset($s->image) }}" alt="{{ $s->name }}" width="6%">
             @endforeach
         </div>
     </div>
@@ -49,28 +49,24 @@
 
         <div class="container grid gap-4 mt-6 md:grid-cols-2 lg:grid-cols-4">
             <div class="flex flex-col items-center">
-                <img src="{{ asset('images/people/client4-free-img-1.png') }}"
-                    class="w-20 rounded-full" alt="">
+                <img src="{{ asset('images/people/client4-free-img-1.png') }}" class="w-20 rounded-full" alt="">
                 <p class="text-center text-orange-500">"Great experience in trekking the Rinjani. Sujar was very good at
                     organising
                     the tour" <br> - Jose F</p>
             </div>
             <div class="flex flex-col items-center">
-                <img src="{{asset('images/people/client1-free-img-1.png')}}"
-                    class="w-20 rounded-full" alt="">
+                <img src="{{asset('images/people/client1-free-img-1.png')}}" class="w-20 rounded-full" alt="">
                 <p class="text-center text-orange-500">"I went alone with a guide and porter from Sujar Rinjani company,
                     that I recommand. Sujar is very careful and organised" <br> - Sophie </p>
             </div>
             <div class="flex flex-col items-center">
-                <img src="{{asset('images/people/client2-free-img-1.png')}}"
-                    class="w-20 rounded-full" alt="">
+                <img src="{{asset('images/people/client2-free-img-1.png')}}" class="w-20 rounded-full" alt="">
                 <p class="text-center text-orange-500">"He organised us a trekking tour to rinjani and it was beatiful,
                     i really recommend him!" <br>
                     - MaDibtceht y</p>
             </div>
             <div class="flex flex-col items-center">
-                <img src="{{asset('images/people/client3-free-img-1.png')}}"
-                    class="w-20 rounded-full" alt="">
+                <img src="{{asset('images/people/client3-free-img-1.png')}}" class="w-20 rounded-full" alt="">
                 <p class="text-center text-orange-500">"Excellent trek with an excellent team, Sujar makes sure
                     everything goes well and his team is adorable! " <br>
                     - emilienchebib</p>
@@ -87,6 +83,25 @@
             <p class="p-8 border rounded text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
     </div>
+    {{-- Contact Us --}}
+    <div class="flex flex-col items-center py-8 dark:text-white mb-12">
+        <h1 class="items-center my-12 text-4xl font-bold">Contact Us</h1>
+        <div class="flex flex-wrap gap-4">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7896.252976445803!2d116.39351205390626!3d-8.290208799999984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdd4dbffe3fcd5%3A0xda8231ef1197ce8a!2sSujar%20Rinjani!5e0!3m2!1sid!2sid!4v1724854595750!5m2!1sid!2sid"
+                class="" style="border: 0" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="flex flex-col gap-4">
+                <input type="text" class="field" placeholder="Your Name" />
+                <input type="text" class="field" placeholder="Email" />
+                <input type="text" class="field" placeholder="Phone Number" />
+                <textarea placeholder="Message" class="field"></textarea>
+                <button class="btn border border-gray-100 py-3">Send</button>
+            </div>
+        </div>
+    </div>
+
 </x-app-layout>
 <x-footer />
 {{-- Footer --}}

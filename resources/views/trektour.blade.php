@@ -4,7 +4,7 @@
             description="This is a small text at the bottom of the card." />
     </x-slot> --}}
     <div class="flex mt-4 pt-12"></div>
-    <div class="flex text-3xl text-center my-12 font-bold">Trek</div>
+    <div class="flex text-3xl text-center my-12 font-bold dark:text-white"">Trek</div>
     <div class="container grid grid-cols-1 gap-8 p-6 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($kategori as $t)
         <a href="{{ route('tours.ByCategory', $t->id ) }}">
@@ -13,7 +13,7 @@
         @endforeach
     </div>
 
-    <div class="flex text-3xl text-center my-12 font-bold">Tours</div>
+    <div class="flex text-3xl text-center my-12 font-bold dark:text-white"">Tours</div>
     <div class="container grid grid-cols-1 gap-8 p-6 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($tours as $t)
         <a href="">
