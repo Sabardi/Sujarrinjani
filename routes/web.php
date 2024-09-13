@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TourController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\FrontController as HalamanDepan;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 
@@ -33,8 +34,15 @@ Route::post('/booking', [FrontController::class, 'bookingstore'])->name('booking
 // filter
 Route::get('/tours/category/{kategori}/show', [FrontController::class, 'filterByCategory'])->name('tours.ByCategory');
 
+Route::get('/tours/detail/{tour}/show', [HalamanDepan::class, 'detialtours'])->name('tours.detail');
+
 // artikel show
 Route::get('/dashboard/admin', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+// contact
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
     Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCategory'])->name('tours.filterByCategory');

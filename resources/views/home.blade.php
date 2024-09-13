@@ -24,7 +24,7 @@
     </div>
     <div class="container grid items-center grid-cols-1 gap-8 p-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
         @foreach ($tours as $tour)
-        <a href="" class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md') }}">
+        <a href="{{ route('tours.detail', $tour->id) }}" class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md') }}">
             <x-card imageUrl="{{ asset($tour->image) }}" title="{{ $tour->name }}"
                 description="{{ $tour->description }}" />
         </a>
@@ -84,7 +84,7 @@
         </div>
     </div>
     {{-- Contact Us --}}
-    <div class="flex flex-col items-center py-8 dark:text-white mb-12">
+    <div class="flex flex-col items-center py-8 mb-12 dark:text-white">
         <h1 class="items-center my-12 text-4xl font-bold">Contact Us</h1>
         <div class="flex flex-wrap gap-4">
             <iframe
@@ -97,7 +97,7 @@
                 <input type="text" class="field" placeholder="Email" />
                 <input type="text" class="field" placeholder="Phone Number" />
                 <textarea placeholder="Message" class="field"></textarea>
-                <button class="btn border border-gray-100 py-3">Send</button>
+                <button class="py-3 border border-gray-100 btn">Send</button>
             </div>
         </div>
     </div>
