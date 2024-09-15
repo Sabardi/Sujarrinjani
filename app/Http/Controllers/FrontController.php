@@ -18,6 +18,10 @@ class FrontController extends Controller
         return view('home', compact('tours', 'sponsor'));
     }
 
+    public function detialtours( Tour $tour)
+    {
+        return view('tourdetail', compact('tour'));
+    }
     public function trektour()
     {
         // $tours = Tour::all();
