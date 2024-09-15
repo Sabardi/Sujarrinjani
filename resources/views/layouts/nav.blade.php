@@ -19,13 +19,13 @@
                     <x-nav-link :href="route('trek&tour')" :active="request()->routeIs('trek&tour')">
                         {{ __('Trek & Tours') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('merchandiser')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('merchandiser')" :active="request()->routeIs('merchandiser')">
                         {{ __('Merch') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('booking')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('booking')" :active="request()->routeIs('booking')">
                         {{ __('Book & Pay') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
                         {{ __('Contact') }}
                     </x-nav-link>
                 </div>

@@ -24,6 +24,9 @@ Route::get('/', function () {
 Route::get('/', [FrontController::class, 'index'])->name('home');
 
 Route::get('/trek tour', [FrontController::class, 'trektour'])->name('trek&tour');
+Route::get('/contact',function(){
+    return view('contact');
+})->name('contact');
 
 // merch
 Route::get('/merchandiser', [FrontController::class, 'merch'])->name('merchandiser');

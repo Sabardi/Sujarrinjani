@@ -84,7 +84,7 @@
         </div>
     </div>
     {{-- Contact Us --}}
-    <div class="flex flex-col items-center py-8 dark:text-white mb-12">
+    {{-- <div class="flex flex-col items-center py-8 dark:text-white mb-12">
         <h1 class="items-center my-12 text-4xl font-bold">Contact Us</h1>
         <div class="flex flex-wrap gap-4">
             <iframe
@@ -92,15 +92,17 @@
                 class="" style="border: 0" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
-            <div class="flex flex-col gap-4">
-                <input type="text" class="field" placeholder="Your Name" />
-                <input type="text" class="field" placeholder="Email" />
-                <input type="text" class="field" placeholder="Phone Number" />
-                <textarea placeholder="Message" class="field"></textarea>
-                <button class="btn border border-gray-100 py-3">Send</button>
-            </div>
+            <form action="mailto:hamzaniwahid321@gmail.com?subject=Contact%20Form&body=" method="GET">
+                <div class="flex flex-col gap-4">
+                    <input type="text" name="name" class="field" placeholder="Your Name" required />
+                    <input type="email" name="email" class="field" placeholder="Email" required />
+                    <input type="text" name="phone" class="field" placeholder="Phone Number" required />
+                    <textarea name="message" class="field" placeholder="Message" required></textarea>
+                    <button type="submit" class="btn border border-gray-100 py-3">Send</button>
+                </div>
+            </form>
         </div>
-    </div>
+    </div> --}}
 
 </x-app-layout>
 <x-footer />
