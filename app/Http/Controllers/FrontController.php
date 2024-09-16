@@ -59,7 +59,8 @@ class FrontController extends Controller
 
     public function bookingtours(Tour $tour)
     {
-        return view('formbookingTours',  compact('tour'));
+        $payment = Payment::with('transaksi')->get();
+        return view('formbookingTours',  compact('tour', 'payment'));
     }
 
     public function bookingstore(Request $request)
@@ -95,7 +96,7 @@ class FrontController extends Controller
             $transaksi->save();
 
             DB::commit(); // Commit jika tidak ada error
-            
+
             // Format pesan untuk WhatsApp
             $message = "Booking Details:\n";
             $message .= "Name: " . $request->fullName . "\n";
