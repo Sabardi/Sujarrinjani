@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\FrontController as HalamanDepan;
+use App\Http\Controllers\FrontController as TransaksiFront;
+use App\Http\Controllers\FrontController as BookingFront;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 
@@ -23,21 +25,30 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
-
 Route::get('/trek tour', [FrontController::class, 'trektour'])->name('trek&tour');
-Route::get('/contact',function(){
+Route::get('/merchandiser', [FrontController::class, 'merch'])->name('merchandiser');
+Route::get('/booking & pay', [BookingFront::class, 'booking'])->name('booking');
+// booking
+Route::post('/booking', [BookingFront::class, 'bookingstore'])->name('bookingstore');
+
+Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
 // merch
-Route::get('/merchandiser', [FrontController::class, 'merch'])->name('merchandiser');
-Route::get('/booking', [FrontController::class, 'booking'])->name('booking');
-Route::post('/booking', [FrontController::class, 'bookingstore'])->name('bookingstore');
+
+
+// booking from tours
+Route::get('/booking/{tour}/tours', [BookingFront::class, 'bookingtours'])->name('bookingtours');
 
 // filter
 Route::get('/tours/category/{kategori}/show', [FrontController::class, 'filterByCategory'])->name('tours.ByCategory');
 
 Route::get('/tours/detail/{tour}/show', [HalamanDepan::class, 'detialtours'])->name('tours.detail');
+
+// transaksi
+Route::get('/payment/{booking}/{kode_booking}', [TransaksiFront::class, 'transaksi'])->name('transaksi');
+Route::post('/trx/payment', [TransaksiFront::class, 'store'])->name('transactions.store');
 
 // artikel show
 Route::get('/dashboard/admin', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

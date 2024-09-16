@@ -8,7 +8,7 @@
         @csrf
 
         <!-- Group 1: Personal Information -->
-        <fieldset class="w-1/4">
+        <fieldset class="w-1/3">
             <legend class="text-lg font-medium text-gray-700">Personal Information</legend>
 
             <div class="mt-4">
@@ -22,7 +22,7 @@
                 <input type="email" id="email" name="email" value="{{ old('email') }}"
                     class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm" required>
                 @error('email')
-                    <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
+                <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -31,7 +31,7 @@
                 <input type="text" id="pasport_number" name="pasport_number" value="{{ old('pasport_number') }}"
                     class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm" required>
                 @error('pasport_number')
-                    <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
+                <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -40,33 +40,28 @@
                 <input type="text" id="nationality" name="nationality" value="{{ old('nationality') }}"
                     class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm" required>
                 @error('nationality')
-                    <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
+                <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
                 @enderror
             </div>
         </fieldset>
 
         <!-- Group 2: Tour Information -->
-        <fieldset class="w-1/4">
+        <fieldset class="w-1/3">
             <legend class="text-lg font-medium text-gray-700">Tour Information</legend>
 
             <div class="mt-4">
                 <label for="tours_id" class="block text-sm font-medium text-gray-700">Name Tour:</label>
-                <select class="block w-full form-control" id="tours_id" name="tours_id" required>
-                    <option>Please select</option>
-                    @foreach ($tours as $tour)
-                        <option value="{{ $tour->id }}">{{ $tour->name }}</option>
-                    @endforeach
-                </select>
+                <input type="text" value="{{$tour->name}}" readonly class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm">
+                <input type="hidden" name="tours_id" id="tours_id" value="{{$tour->id}}">
             </div>
 
             <div class="mt-4">
                 <label for="total_participan" class="block text-sm font-medium text-gray-700">Total
                     Participants:</label>
-                <input type="number" id="total_participan" name="total_participan"
-                    value="{{ old('total_participan') }}"
+                <input type="number" id="total_participan" name="total_participan" value="{{ old('total_participan') }}"
                     class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm" required>
                 @error('total_participan')
-                    <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
+                <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
                 @enderror
             </div>
             <!-- Group 4: Additional Information -->
@@ -75,13 +70,13 @@
                 <textarea id="add_message" name="add_message" rows="3"
                     class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm"></textarea>
                 @error('add_message')
-                    <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
+                <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
                 @enderror
             </div>
         </fieldset>
 
         <!-- Group 3: Date & Pickup Information -->
-        <fieldset class="w-1/4">
+        <fieldset class="">
             <legend class="text-lg font-medium text-gray-700">Pickup Information</legend>
 
             <div class="mt-4">
@@ -89,7 +84,7 @@
                 <input type="date" id="arrival_date" name="arrival_date" value="{{ old('arrival_date') }}"
                     class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm" required>
                 @error('arrival_date')
-                    <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
+                <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -98,7 +93,7 @@
                 <input type="time" id="pickup_time" name="pickup_time" value="{{ old('pickup_time') }}"
                     class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm" required>
                 @error('pickup_time')
-                    <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
+                <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -107,7 +102,7 @@
                 <input type="text" id="pickup_location" name="pickup_location" value="{{ old('pickup_location') }}"
                     class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm" required>
                 @error('pickup_location')
-                    <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
+                <div class="mt-1 text-sm text-red-500">{{ $message }}</div>
                 @enderror
             </div>
         </fieldset>

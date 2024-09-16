@@ -62,6 +62,16 @@
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            @foreach ($transaksis as $transaksi)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $transaksi->payment->name }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

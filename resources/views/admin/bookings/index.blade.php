@@ -84,10 +84,8 @@
                                                 <td>{{ $booking->pickup_time }}</td>
                                                 <td>{{ $booking->pickup_location }}</td>
                                                 <td>
-                                                    <a href="{{ route('bookings.show', $booking->id) }}"
-                                                        class="btn btn-info">Show</a>
-                                                    <a href="{{ route('bookings.edit', $booking->id) }}"
-                                                        class="btn btn-warning">Edit</a>
+                                                    <a href="{{ route('transaksi', ['booking' => $booking->id, 'kode_booking' => $booking->kode_booking]) }}"
+                                                        class="btn btn-info">Pay</a>
                                                     <form action="{{ route('bookings.destroy', $booking->id) }}"
                                                         method="POST" style="display:inline-block;">
                                                         @csrf
