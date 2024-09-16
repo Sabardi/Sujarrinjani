@@ -125,6 +125,7 @@ class FrontController extends Controller
     {
         $booking = Booking::where('kode_booking', $kode_booking)->first();
         $transaksi = Transaksi::where('bookings_id', $booking->id)->first();
-        return view('transaksis.create', compact('booking', 'transaksi'));
+        $payment = Payment::all();
+        return view('transaksis.create', compact('booking', 'transaksi', 'payment'));
     }
 }

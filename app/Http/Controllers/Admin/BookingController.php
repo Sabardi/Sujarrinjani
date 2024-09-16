@@ -12,7 +12,7 @@ class BookingController extends Controller
     //
     public function index()
     {
-        $bookings = Booking::latest()->get();
+        $bookings = Booking::with('transaksi')->latest()->get();
         return view('admin.bookings.index', compact('bookings'));
     }
 

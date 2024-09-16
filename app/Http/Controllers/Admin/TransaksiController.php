@@ -13,7 +13,7 @@ class TransaksiController extends Controller
     //
     public function index()
     {
-        $transaksis = Transaksi::all();
+        $transaksis = Transaksi::with('booking.tour')->get();
         return view('admin.transaksis.index', compact('transaksis'));
     }
 

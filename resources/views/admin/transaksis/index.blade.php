@@ -52,6 +52,9 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Name</th>
+                                            <th>Tour</th>
+                                            <th>email</th>
+                                            <th>status</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -59,17 +62,41 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Name</th>
+                                            <th>Tour</th>
+                                            <th>email</th>
+                                            <th>status</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
                                             @foreach ($transaksis as $transaksi)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $transaksi->payment->name }}</td>
-                                            </tr>
-                                            @endforeach
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $transaksi->booking->fullName }}</td>
+                                            <td>{{ $transaksi->booking->tour->name }}</td>
+                                            <td>{{ $transaksi->booking->email }}</td>
+                                            <td>{{ $transaksi->status }}</td>
+                                            <td>
+                                                @if ($transaksi->status == 'unpaid')
+                                                    <a href="{{ route('transaksi', ['booking' => $transaksi->booking->id, 'kode_booking' => $transaksi->booking->kode_booking]) }}"
+                                                        class="btn btn-info">Pay</a>
+                                                @elseif ($transaksi->status == 'checked')
+                                                    <a href="#" class="btn btn-warning">Being Checked</a>
+                                                @elseif ($transaksi->status == 'success')
+                                                    <a href="#" class="btn btn-success">Done</a>
+                                                @endif
+
+                                                <form action="{{ route('bookings.destroy', $transaksi->id) }}"
+                                                    method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger"
+                                                        onclick="return confirm('Are you sure?')">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
                                         </tr>
                                     </tbody>
                                 </table>
