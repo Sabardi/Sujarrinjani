@@ -79,7 +79,7 @@
                                             <td>{{ $transaksi->status }}</td>
                                             <td>
                                                 @if ($transaksi->status == 'unpaid')
-                                                    <a href="{{ route('transaksi', ['booking' => $transaksi->booking->id, 'kode_booking' => $transaksi->booking->kode_booking]) }}"
+                                                    <a href="{{ route('konrimasi.transaksi', $transaksi->id) }}"
                                                         class="btn btn-info">Pay</a>
                                                 @elseif ($transaksi->status == 'checked')
                                                     <a href="#" class="btn btn-warning">Being Checked</a>

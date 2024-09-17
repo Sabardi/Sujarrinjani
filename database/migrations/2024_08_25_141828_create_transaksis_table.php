@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('bookings_id')->constrained('bookings');
             $table->foreignId('payment_id')->constrained('payments');
-            $table->string('status', 45)->nullable();
+            $table->string('status')->default('unpaid');
+            $table->string('image', 250)->nullable();
             $table->timestamps();
         });
     }

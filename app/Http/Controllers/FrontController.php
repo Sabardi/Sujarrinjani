@@ -121,11 +121,40 @@ class FrontController extends Controller
     }
 
 
-    public function transaksi($booking, $kode_booking)
+    public function transaksi(Transaksi $transaksi)
     {
-        $booking = Booking::where('kode_booking', $kode_booking)->first();
-        $transaksi = Transaksi::where('bookings_id', $booking->id)->first();
-        $payment = Payment::all();
-        return view('transaksis.create', compact('booking', 'transaksi', 'payment'));
+        return view('transaksis.create', compact('transaksi'));
     }
+
+    public function updateTransaksi(Request $request, Transaksi $transaksi)
+    {
+        // Validasi input
+        $request->validate([
+            'status' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        // Ambil data dari request, kecuali untuk gambar
+        $data = $request->except(['image']);
+
+        // Jika ada gambar baru, proses penyimpanan gambar
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if ($transaksi->image && file_exists(public_path($transaksi->image))) {
+                unlink(public_path($transaksi->image));
+            }
+
+            // Simpan gambar baru
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/transaksi'), $imageName);
+            $data['image'] = 'images/transaksi/' . $imageName; // Perbarui jalur gambar di database
+        }
+
+        // Perbarui data model dengan data baru
+        $transaksi->update($data);
+
+        return redirect()->route('home')->with('success', 'Transaksi berhasil diperbarui.');
+    }
+
+
 }

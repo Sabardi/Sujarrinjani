@@ -34,6 +34,7 @@ class BookingFactory extends Factory
             'arrival_date' => $this->faker->dateTimeBetween('-1 years', '+1 years'),
             'pickup_time' => $this->faker->time('H:i:s'),
             'pickup_location' => $this->faker->city,
+            // 'status' => $this->faker->randomElement(['unpaid', 'checked', 'success']),
             'add_message' => $this->faker->sentence,
             'created_at' => $createdAt, // Tanggal acak pembuatan
             'updated_at' => $updatedAt, // Tanggal acak pembaruan

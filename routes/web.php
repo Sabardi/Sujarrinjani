@@ -13,7 +13,6 @@ use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\FrontController as HalamanDepan;
-use App\Http\Controllers\FrontController as TransaksiFront;
 use App\Http\Controllers\FrontController as BookingFront;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
@@ -47,8 +46,9 @@ Route::get('/tours/category/{kategori}/show', [FrontController::class, 'filterBy
 Route::get('/tours/detail/{tour}/show', [HalamanDepan::class, 'detialtours'])->name('tours.detail');
 
 // transaksi
-Route::get('/payment/{booking}/{kode_booking}', [TransaksiFront::class, 'transaksi'])->name('transaksi');
-Route::post('/trx/payment', [TransaksiFront::class, 'store'])->name('transactions.store');
+Route::get('konfirmasi/transaksi/{transaksi}', [FrontController::class, 'transaksi'])->name('konrimasi.transaksi');
+// update transaksi
+Route::put('konfirmasi/transaksi/{transaksi}', [FrontController::class, 'updateTransaksi'])->name('konfirmasi.transaksi');
 
 // artikel show
 Route::get('/dashboard/admin', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -57,6 +57,10 @@ Route::get('/dashboard/admin', [AdminController::class, 'index'])->middleware(['
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+
+
+
 
 Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
     Route::get('/tours/category/{kategori}', [TourController::class, 'filterByCategory'])->name('tours.filterByCategory');
