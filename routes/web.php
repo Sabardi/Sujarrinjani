@@ -83,6 +83,9 @@ Route::middleware('auth', 'role:admin|contentmanager')->group(function () {
     Route::get('register-acount', [RegisteredUserController::class, 'register'])->name('register-acount');
     Route::post('register-acount', [RegisteredUserController::class, 'store'])->name('store-acount');
     Route::get('user-acount', [UserController::class, 'index'])->name('user-acount');
+    // Route::get('user-acount/{user}/edit', [UserController::class, 'edit'])->name('user-acount.edit');
+    // Route::put('user-acount/{user}', [UserController::class, 'update'])->name('user-acount.update');
+    Route::delete('user-acount/{user}', [UserController::class, 'destroy'])->name('user-acount.destroy');
 });
 
 require __DIR__ . '/auth.php';
