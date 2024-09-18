@@ -15,12 +15,27 @@
         <div class="container">
             <h1>Create Transaction</h1>
             <div class="form-group">
-                {{-- <input type="hidden" name="status" id="status" value="checked"> --}}
-                <label for="image">upload bukti transaksi:</label>
-                <input type="file" class="form-control" id="image" name="image" required>
-                @error('image')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
+                <table>
+                    {{-- <input type="hidden" name="status" id="status" value="checked"> --}}
+                    <label for="name">kode booking</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $transaksi->booking->kode_booking }}" readonly>
+
+                    <label for="name">Bank payment</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $transaksi->payment->name }}" readonly>
+
+                    <label for="name">Nasabah name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $transaksi->payment->nasabah_name }}" readonly>
+
+                    <label for="name">wisata name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $transaksi->booking->tour->name }}" readonly>
+
+
+                    <label for="image">upload bukti transaksi:</label>
+                    <input type="file" class="form-control" id="image" name="image" required>
+                    @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </table>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
