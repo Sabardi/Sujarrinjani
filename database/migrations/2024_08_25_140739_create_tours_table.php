@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('price');
             $table->foreignId('kategori_id')->constrained('kategoris');
             $table->string('image', 250);
+            $table->longText('content');
             $table->timestamps();
         });
     }

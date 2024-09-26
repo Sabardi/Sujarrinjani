@@ -33,6 +33,7 @@
                         <td>{{ $tour->kategori->name }}</td>
                         <td>{{ $tour->image }}</td>
                         <td>
+                            {{-- <a href="{{ route('bookings.create', $tour->id) }}" class="btn btn-info">booking</a> --}}
                             <a href="{{ route('tours.show', $tour->id) }}" class="btn btn-info">Show</a>
                             <a href="{{ route('tours.edit', $tour->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('tours.destroy', $tour->id) }}" method="POST" style="display:inline-block;">

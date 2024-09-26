@@ -9,7 +9,7 @@ class Tour extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'kategori_id', 'image'];
+    protected $fillable = ['name', 'description', 'price', 'kategori_id', 'image', 'content'];
 
     public function kategori()
     {

@@ -9,7 +9,7 @@ class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['bookings_id', 'payment_id', 'status'];
+    protected $fillable = ['bookings_id', 'payment_id', 'status', 'image'];
 
     public function booking()
     {
